@@ -1,3 +1,4 @@
+//Toggle menu bar
 var dropdownOpen = false;
 
 function toggleDropdown() {
@@ -9,3 +10,4 @@ function toggleDropdown() {
     }
     dropdownOpen = !dropdownOpen;
 }
+
