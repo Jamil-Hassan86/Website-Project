@@ -6,9 +6,18 @@ const port = 3000;
 
 const app = express();
 
+//routes
+const beginnerRoute = require('./routes/beginner');
+const intermediateRoute = require('./routes/intermediate');
+const proRoute = require('./routes/pro');
+
+
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(cors())
+app.use("/beginner", beginnerRoute);
+app.use("/intermediate", intermediateRoute);
+app.use("/pro", proRoute);
 
 const db = mysql.createConnection({
     host: `localhost`,
@@ -58,6 +67,8 @@ app.post("/api/user/create", (req, res) => {
 app.get("/", (req, res) => {
     res.send("Hello world!");
 })
+
+
 
 app.listen(port, () => {
     console.log(`Server is on localhost port ${port}`);
