@@ -60,7 +60,7 @@ app.post("/api/user/create", (req, res) => {
   db.query(createUserQuery, [name, email, password, fitness_plan], (err, result) => {
     if (err) throw err;
     console.log("User added to the database: ", result);
-    res.redirect('/');
+    res.send("You have successfully created an account");
   });
 });  
 

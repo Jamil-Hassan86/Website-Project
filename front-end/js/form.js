@@ -27,7 +27,11 @@ const signupForm = document.getElementById("signup-form");
                 }
 
                 console.log("User account created.");
-            } catch (error) {
+                const message = await response.text();
+                alert(message);
+                window.location.href = "../public/index.html";
+            }
+             catch (error) {
                 console.error(error);
             }
         });
