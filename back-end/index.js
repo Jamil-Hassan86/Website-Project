@@ -3,6 +3,8 @@ const mysql = require("mysql2");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const port = 3000;
+const path = require('path');
+const http = require('http');
 
 const app = express();
 
@@ -14,7 +16,8 @@ const proRoute = require('./routes/pro');
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-app.use(cors())
+app.use(cors());
+app.use(express.static('../front-end/public'));
 
 const db = mysql.createConnection({
     host: `localhost`,
@@ -57,13 +60,13 @@ app.post("/api/user/create", (req, res) => {
   db.query(createUserQuery, [name, email, password, fitness_plan], (err, result) => {
     if (err) throw err;
     console.log("User added to the database: ", result);
-    res.send("User account created.");
+    res.redirect('/');
   });
 });  
 
 app.get("/", (req, res) => {
-    res.send("Hello world!");
-})
+    res.send("Hello");
+});
 
 app.use("/beginner", beginnerRoute);
 app.use("/intermediate", intermediateRoute);
