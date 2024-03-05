@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 router.get("/", (req, res) => {
-    if (req.params.fitness_plan === "Pro") { 
+    if (req.query.fitness_plan === "Pro") { 
         res.send("hello");
     } 
     else { 
