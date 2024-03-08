@@ -64,3 +64,9 @@ h1 {
     background-image: url('../images/Logo.jpg');
     background-size: cover;
 }
+
+@media screen and (max-width: 600px) {
+    .logo {
+        width: 50px;
+    }
+}

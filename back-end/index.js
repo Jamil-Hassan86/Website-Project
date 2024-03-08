@@ -83,19 +83,30 @@ app.post("/api/user/create", (req, res) => {
 app.post("/api/user/login", (req, res) => {
   const { email, password } = req.body;
 
-  const userId = 1;
+  // Simulate user authentication (replace with your authentication logic)
+  if (email === 'hello@gmail.com' && password === '123') {
+    const userId = 1;
 
-  getUserFitnessPlan(userId)
-    .then((fitnessPlan) => {
-      // Store user information in the session
-      req.session.userId = userId;
-      req.session.fitnessPlan = fitnessPlan;
+    getUserFitnessPlan(userId)
+      .then((fitnessPlan) => {
+        // Store user information in the session
+        req.session.userId = userId;
+        req.session.fitnessPlan = fitnessPlan;
 
-      res.send("You have successfully logged in");
-    })
-    .catch((err) => {
-      // handle error
-    });
+        // If the user has a beginner fitness plan, send the info.html file
+        if (fitnessPlan === 'beginner') {
+          res.sendFile(path.join(__dirname, '../front-end/public/info.html'));
+        } else {
+          res.send("You have successfully logged in");
+        }
+      })
+      .catch((err) => {
+        console.error('Error fetching user fitness plan:', err);
+        res.status(500).send("Internal Server Error");
+      });
+  } else {
+    res.status(401).send("Invalid email or password");
+  }
 });
 
 
@@ -157,6 +168,9 @@ getUserFitnessPlan(1).then((fitness) => {
 app.use("/beginner", beginnerRoute);
 app.use("/intermediate", intermediateRoute);
 app.use("/pro", proRoute);
+
+app.get("/api/user/login", sessionCheck);
+
 
 
 app.listen(port, () => {
