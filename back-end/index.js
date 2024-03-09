@@ -34,6 +34,7 @@ app.use(bodyParser.json());
 app.use(cors());
 app.use(express.static('../front-end/public'));
 app.use(express.static('../front-end/js'));
+app.use(express.static('../front-end/images'));
 
 
 //creating database to store user records
