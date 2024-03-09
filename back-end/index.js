@@ -7,8 +7,11 @@ const port = 3000;
 const path = require('path');
 const http = require('http');
 const session = require('express-session');
+const ejs = require('ejs');
 
 const app = express();
+
+app.set('view engine', 'ejs');
 
 app.use(
   session({
@@ -23,12 +26,15 @@ app.use(
 const beginnerRoute = require('./routes/beginner');
 const intermediateRoute = require('./routes/intermediate');
 const proRoute = require('./routes/pro');
+const homeRoutes = require('./routes/home')
 
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(cors());
 app.use(express.static('../front-end/public'));
+app.use(express.static('../front-end/js'));
+
 
 //creating database to store user records
 
@@ -40,7 +46,7 @@ const db = mysql.createConnection({
 });
 
 const createUserTable = `
-CREATE TABLE users (
+CREATE TABLE IF NOT EXISTS users (
   id INT AUTO_INCREMENT,
   name VARCHAR(50),
   email VARCHAR(50),
@@ -169,7 +175,8 @@ app.use("/beginner", beginnerRoute);
 app.use("/intermediate", intermediateRoute);
 app.use("/pro", proRoute);
 
-app.get("/api/user/login", sessionCheck);
+
+app.use('/home', homeRoutes);
 
 
 

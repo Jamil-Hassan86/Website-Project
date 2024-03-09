@@ -16,7 +16,7 @@ loginForm.addEventListener("submit", async (event) => {
         });
 
         if (response.ok) {
-            window.location.href = "../public/info.html";
+            window.location.href = "../../back-end/routes/home";
         } else {
             alert("User does not exist or email/password is incorrect.")
             console.error("Login failed");
