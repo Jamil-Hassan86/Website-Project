@@ -61,7 +61,7 @@ h1 {
     display: inline-block;
     width: 200px;
     height: 50px;
-    background-image: url('../images/Logo.jpg');
+    background-image: url('/Logo.jpg');
     background-size: cover;
 }
 
