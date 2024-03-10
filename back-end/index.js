@@ -100,36 +100,45 @@ const getUserFitnessPlan = (userId) => {
   //  }
   //};
 
-//handles login
 app.post("/api/user/login", (req, res) => {
   const { email, password } = req.body;
-
+  
   // Simulate user authentication (replace with your authentication logic)
-  if (email === 'hello@gmail.com' && password === '123') {
-    const userId = 1;
+  const query = 'SELECT id, fitness_plan FROM users WHERE email = ? AND password = ?';
+  db.query(query, [email, password], (err, result) => {
+    if (err) {
+      console.error('Error fetching user:', err);
+      return res.status(500).send("Internal Server Error");
+    }
+    if (result.length > 0) {
+      const userId = result[0].id;
+      const fitnessPlan = result[0].fitness_plan;
 
-    getUserFitnessPlan(userId)
-      .then((fitnessPlan) => {
-        // Store user information in the session
-        req.session.userId = userId;
-        req.session.fitnessPlan = fitnessPlan;
-
-        // If the user has a beginner fitness plan, send the info.html file
-        if (fitnessPlan === 'beginner') {
-          res.send("he");
-        } else {
-          res.send("You have successfully logged in");
-        }
-      })
-      .catch((err) => {
-        console.error('Error fetching user fitness plan:', err);
-        res.status(500).send("Internal Server Error");
-      });
-  } else {
-    res.status(401).send("Invalid email or password");
-  }
+      // Store user information in the session
+      req.session.userId = userId;
+      req.session.fitnessPlan = fitnessPlan;
+  
+      getUserFitnessPlan(userId)
+        .then((fitnessPlan) => {
+          // If the user has a beginner fitness plan, send the info.html file
+          if (fitnessPlan === 'beginner') {
+            res.send("he");
+          } else if (fitnessPlan === 'intermediate') {
+            res.send("You have successfully logged in");
+          } else if (fitnessPlan === 'pro') {
+            res.send("Pro");
+          }
+        })
+        .catch((err) => {
+          console.error('Error fetching user fitness plan:', err);
+          res.status(500).send("Internal Server Error");
+        });
+    } else {
+      // If no user found with the provided credentials
+      res.status(401).send("Invalid email or password");
+    }
+  });
 });
-
 
 const sessionCheck = (req, res, next) => {
   if (!req.session.userId) {

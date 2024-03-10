@@ -59,14 +59,15 @@ h1 {
 /* Change logo of site to image and links back to home page */
 .logo {
     display: inline-block;
-    width: 200px;
+    width: 175px;
     height: 50px;
     background-image: url('/Logo.jpg');
-    background-size: cover;
+    object-fit: cover;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 325px) {
     .logo {
-        width: 50px;
+        max-width: 100px;
+        object-fit: cover;
     }
 }
