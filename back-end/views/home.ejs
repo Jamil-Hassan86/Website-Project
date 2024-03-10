@@ -6,10 +6,18 @@
         <title>ShapeShift - Info</title>
         <link href="/styles/styles.css" rel="stylesheet"/>
         <script src="/script.js"></script>
+        <style>
+            .main {display: flex; height: 120vh; justify-content: center;}
+            main { display: flex; justify-content: center; align-items: center; width: 100%; height: 95%; overflow: hidden; max-width: 100%;}
+            .opening { position: absolute; top: 30%; left: 50%; transform: translate(-50%, -50%); text-align: center; z-index: 2; }
+            .opening h1 { color: red;}
+            .main-image { display:flex; justify-content: center; align-items:center; width: 100%; height: 100%; position: relative;}
+            .main-image img { width: 100%; height: 100%; object-fit: cover;}    
+        </style>
     </head>
     <body>
         <header>
-            <h1><a href="index.html" class="logo"></a></h1>
+            <h1><a href="/home" class="logo"></a></h1>
             <nav>
                 <div class="dropdown">
                     <button class="dropbtn" onclick="toggleDropdown()">Menu</button>
@@ -23,6 +31,16 @@
                 </div>
             </nav>
         </header>
+        <div class="main">
+            <main>
+                <div class="main-image">
+                <img src="/Main.png">
+                    <div class="opening">
+                        <h1>Welcome <%= userName %> to the home page of ShapeShift!</h1>
+                    </div>
+                </div>
+            </main>
+        </div>
 
     </body>
 

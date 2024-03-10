@@ -29,7 +29,7 @@ const signupForm = document.getElementById("signup-form");
                 console.log("User account created.");
                 const message = await response.text();
                 alert(message);
-                window.location.href = "../public/index.html";
+                window.location.href = "/";
             }
              catch (error) {
                 console.error(error);
