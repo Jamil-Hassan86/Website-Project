@@ -27,6 +27,7 @@ const beginnerRoute = require('./routes/beginner');
 const intermediateRoute = require('./routes/intermediate');
 const proRoute = require('./routes/pro');
 const homeRoutes = require('./routes/home')
+const logoutRoutes = require('./routes/log-out');
 
 
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -91,14 +92,6 @@ const getUserFitnessPlan = (userId) => {
     });
   });
 };
-  //const auth = (fitnessPlan) => (req, res, next) => {
-  //  const userFitnessPlan = req.user.fitness_plan;
-  //  if (userFitnessPlan === fitnessPlan) {
-  //    next();
-  //  } else {
-  //    res.status(401).send('Unauthorized');
-  //  }
-  //};
 
 app.post("/api/user/login", (req, res) => {
   const { email, password } = req.body;
@@ -113,6 +106,8 @@ app.post("/api/user/login", (req, res) => {
     if (result.length > 0) {
       const userId = result[0].id;
       const fitnessPlan = result[0].fitness_plan;
+
+      
 
       // Store user information in the session
       req.session.userId = userId;
@@ -159,12 +154,18 @@ app.get("/", (req, res) => {
     res.send("Hello");
 });
 
+app.get("/profile", sessionCheck, (req, res) => {
+  // This route will only be accessible if the user is authenticated
+  res.send("Welcome to your profile!");
+});
+
 app.use("/beginner", beginnerRoute);
 app.use("/intermediate", intermediateRoute);
 app.use("/pro", proRoute);
 
 
 app.use('/home', homeRoutes);
+app.use('/log-out', logoutRoutes);
 
 
 

@@ -7,36 +7,48 @@
         <link href="/styles/styles.css" rel="stylesheet"/>
         <script src="/script.js"></script>
         <style>
-            .main {display: flex; height: 120vh; justify-content: center;}
+            .main {display: flex; height: 120vh; justify-content: center; margin-top: auto;}
             main { display: flex; justify-content: center; align-items: center; width: 100%; height: 95%; overflow: hidden; max-width: 100%;}
             .opening { position: absolute; top: 30%; left: 50%; transform: translate(-50%, -50%); text-align: center; z-index: 1; }
             .opening h1 { color: red;}
             .main-image { display:flex; justify-content: center; align-items:center; width: 100%; height: 100%; position: relative;}
-            .main-image img { width: 100%; height: 100%; object-fit: cover;}    
+            .main-image img { width: 100%; height: 100%; object-fit: cover;}
+            .get-started { position: absolute; bottom: 300px; left: 50%; transform: translateX(-50%); z-index: 1; }
+            .get-started button { padding: 10px 80px; background-color: green; color: #fff; border: none; border-radius: 5px; cursor: pointer; } 
+            .get-started button:hover {background-color: #68c268;}  
         </style>
     </head>
     <body>
-        <header>
-            <h1><a href="index.html" class="logo"></a></h1>
-            <nav>
-                <div class="dropdown">
-                    <button class="dropbtn" onclick="toggleDropdown()">Menu</button>
-                    <div class="dropdown-content" id="myDropdown">
-                        <a href="feedback.html">Feedback</a>
-                        <a href="info.html">Information</a>
-                        <a href="calculator.html">Calorie Calculator</a>
-                        <a href="signup.html">Sign Up</a>
-                        <a href="login.html">Log In</a>
-                    </div>
+        <div class="header-content">
+            <header>
+                <div class="logo-container">
+                    <a href="/" class="logo">
+                        <img src ="Logo.jpg" alt ="logo">
+                    </a>    
                 </div>
-            </nav>
-        </header>
+                <nav>
+                    <div class="dropdown">
+                        <button class="dropbtn" onclick="toggleDropdown()">Menu</button>
+                        <div class="dropdown-content" id="myDropdown">
+                            <a href="feedback.html">Feedback</a>
+                            <a href="info.html">Information</a>
+                            <a href="calculator.html">Calorie Calculator</a>
+                            <a href="signup.html">Sign Up</a>
+                            <a href="login.html">Log In</a>
+                        </div>
+                    </div>
+                </nav>
+            </header>
+        </div>    
         <div class="main">
             <main>
                 <div class="main-image">
                 <img src="/Main.png">
                     <div class="opening">
                         <h1>Welcome to the home page of ShapeShift!</h1>
+                    </div>
+                    <div class="get-started">
+                        <a href="signup.html"><button type="submit">Get Started</button></a>
                     </div>
                 </div>
             </main>

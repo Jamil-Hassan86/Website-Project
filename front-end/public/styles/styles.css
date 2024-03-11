@@ -10,8 +10,12 @@ header {
     justify-content: space-between;
     align-items: center;
     background-color: green;
-    padding: 10px 10px;
+    padding: 5px;
+    width: 100%;
+    position: fixed;
+    z-index: 999;
 }
+
 
 h1 {
     color: black;
@@ -20,6 +24,7 @@ h1 {
 /* Dropdown wrapper */
 .dropdown {
     position: relative;
+    margin-top: auto;
 }
 
 /* Dropdown button */
@@ -29,6 +34,14 @@ h1 {
     font-size: 16px;
     border: none;
     cursor: pointer;
+    padding: 0;
+    margin: 0;
+    position: relative;
+    display: flex;
+    width: auto;
+    height: auto;
+    margin-right: 10px;
+
 }
 
 /* Dropdown content (hidden by default) */
@@ -36,11 +49,11 @@ h1 {
     display: none;
     position: absolute;
     background-color: #f9f9f9;
-    min-width: 160px;
+    min-width: 400%;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 2;
-    left: -100px;
-    top: 72px;
+    left: -280%;
+    top: 155%;
 }
 
 /* Links inside the dropdown */
@@ -58,16 +71,8 @@ h1 {
 
 /* Change logo of site to image and links back to home page */
 .logo {
-    display: inline-block;
-    width: 175px;
-    height: 50px;
-    background-image: url('/Logo.jpg');
-    object-fit: cover;
+    display: block;
+    height: auto; /* Maintain aspect ratio */
+    width: auto;
 }
 
-@media screen and (max-width: 325px) {
-    .logo {
-        max-width: 100px;
-        object-fit: cover;
-    }
-}
