@@ -23,9 +23,7 @@ app.use(
 );
 
 //routes
-const beginnerRoute = require('./routes/beginner');
-const intermediateRoute = require('./routes/intermediate');
-const proRoute = require('./routes/pro');
+const fitnessPlanRoute = require('./routes/fitnessPlan');
 const homeRoutes = require('./routes/home')
 const logoutRoutes = require('./routes/log-out');
 
@@ -115,13 +113,12 @@ app.post("/api/user/login", (req, res) => {
   
       getUserFitnessPlan(userId)
         .then((fitnessPlan) => {
-          // If the user has a beginner fitness plan, send the info.html file
           if (fitnessPlan === 'beginner') {
-            res.send("he");
+            res.send("/beginner");
           } else if (fitnessPlan === 'intermediate') {
-            res.send("You have successfully logged in");
+            res.send("/intermediate");
           } else if (fitnessPlan === 'pro') {
-            res.send("Pro");
+            res.send("/pro");
           }
         })
         .catch((err) => {
@@ -159,9 +156,8 @@ app.get("/profile", sessionCheck, (req, res) => {
   res.send("Welcome to your profile!");
 });
 
-app.use("/beginner", beginnerRoute);
-app.use("/intermediate", intermediateRoute);
-app.use("/pro", proRoute);
+app.use('/fitnessPlan', fitnessPlanRoute);
+
 
 
 app.use('/home', homeRoutes);
