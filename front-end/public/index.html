@@ -7,36 +7,39 @@
         <link href="/styles/styles.css" rel="stylesheet"/>
         <script src="/script.js"></script>
         <style>
-            .main {display: flex; height: 120vh; justify-content: center; margin-top: auto;}
-            main { display: flex; justify-content: center; align-items: center; width: 100%; height: 95%; overflow: hidden; max-width: 100%;}
+            .main {display: flex; height: 120vh; margin-top: auto;}
+            main { display: flex; justify-content: center; align-items: center; width: 100%; height: 100%; overflow: hidden; max-width: 100%;}
             .opening { position: absolute; top: 30%; left: 50%; transform: translate(-50%, -50%); text-align: center; z-index: 1; }
-            .opening h1 { color: red;}
+            .opening h1 { color: red; font-size: 2rem;}
             .main-image { display:flex; justify-content: center; align-items:center; width: 100%; height: 100%; position: relative;}
             .main-image img { width: 100%; height: 100%; object-fit: cover;}
             .get-started { position: absolute; bottom: 300px; left: 50%; transform: translateX(-50%); z-index: 1; }
             .get-started button { padding: 10px 80px; background-color: green; color: #fff; border: none; border-radius: 5px; cursor: pointer; } 
-            .get-started button:hover {background-color: #68c268;}  
+            .get-started button:hover {background-color: #68c268;}
+            section {background-color: white;}
+            .about-us {display: flex;  background-color:  white; justify-content: center;}
+            .about-us h1 {margin: 0; font-size: 2.3em;}
+            .about-content {background-color: white; margin-top: 0;}
+            .row {display: flex; flex-wrap: wrap;}  
         </style>
     </head>
     <body>
-        <div class="header-content">
-            <header>
-                <div class="logo-container">
-                    <a href="/" class="logo">
-                        <img src ="Logo.jpg" alt ="logo">
-                    </a>    
-                </div>
-                <nav>
-                    <div class="dropdown">
-                        <button class="dropbtn" onclick="toggleDropdown()">Menu</button>
-                        <div class="dropdown-content" id="myDropdown">
-                            <a href="signup.html">Sign Up</a>
-                            <a href="login.html">Log In</a>
-                        </div>
+        <header>
+            <div class="logo-container">
+                <a href="/" class="logo">
+                    <img src ="Logo.jpg" alt ="logo">
+                </a>    
+            </div>
+            <nav>
+                <div class="dropdown">
+                    <button class="dropbtn" onclick="toggleDropdown()">Menu</button>
+                    <div class="dropdown-content" id="myDropdown">
+                        <a href="signup.html">Sign Up</a>
+                        <a href="login.html">Log In</a>
                     </div>
-                </nav>
-            </header>
-        </div>    
+                </div>
+            </nav>
+        </header>    
         <div class="main">
             <main>
                 <div class="main-image">
@@ -50,6 +53,18 @@
                 </div>
             </main>
         </div>
+        <section>
+            <div class="about-us">
+                <h1>About us</h1>
+            </div>
+            <div class="about-content">
+                <div class="row">
+                    <h2>What We Do</h2>
+                    <hr>
+                </div>
+                
+            </div>
+        </section>
 
     </body>
 
