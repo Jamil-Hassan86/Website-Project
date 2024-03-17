@@ -1,15 +1,11 @@
-const mysql = require("mysql2");
-
-const db = mysql.createConnection({
-    host: "localhost",
-    user: "root",
-    password: "123456789",
-    database: "fitness_db"
+const sqlite3 = require("sqlite3").verbose();
+const db = new sqlite3.Database('database.sqlite', (err) => {
+    if (err) {
+        console.error('Error cannot connect to database:', err);
+      } else {
+        console.log('Connected to database');
+      }  
 });
 
-db.connect((err) => {
-    if (err) throw err;
-    console.log("Connected to database");
-});
 
 module.exports = db;

@@ -5,7 +5,7 @@ const { db } = require('../database');
 const getUserById = (userId, db) => {
     return new Promise((resolve, reject) => {
         const query = "SELECT name FROM users WHERE id = ?";
-        db.query(query, [userId], (err, result) => {
+        db.all(query, [userId], (err, result) => {
             if (err) {
                 reject(err);
             } else {
@@ -33,10 +33,12 @@ router.get('/', async (req, res) => {
         // Fetch the user's name from the database
         const db = require("../database"); // Import the database connection
         const userName = await getUserById(userId, db);
+        fullName = userName.split(" ");
+        firstName = fullName[0]
 
         if (userName) {
             // Render the home page with the user's name
-            res.render("home", { userName: userName });
+            res.render("home", { userName: firstName });
         } else {
             // User not found in the database
             res.status(404).send("User not found");

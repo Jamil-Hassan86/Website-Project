@@ -1,173 +1,171 @@
 //importing modules
 const express = require ("express");
-const mysql = require("mysql2");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const port = 3000;
-const path = require('path');
-const http = require('http');
 const session = require('express-session');
 const db = require('./database');
 
 const app = express();
 
-app.set('view engine', 'ejs');
+//creates table in database before running this code
+(async () => {
+  try {
+    await new Promise((resolve, reject) => {
+      const createUserTable = `
+        CREATE TABLE IF NOT EXISTS users (
+          id INTEGER PRIMARY KEY AUTOINCREMENT,
+          name VARCHAR(50),
+          email VARCHAR(50) UNIQUE,
+          password VARCHAR(50),
+          fitness_plan VARCHAR(50)
+        );
+      `;
 
-app.use(
-  session({
-    secret: "123",
-    resave: false,
-    saveUninitialized: true,
-    cookie: { secure: false },
-  })
-);
-
-//routes
-const fitnessPlanRoute = require('./routes/fitnessPlan');
-const homeRoutes = require('./routes/home')
-const logoutRoutes = require('./routes/log-out');
-
-
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
-app.use(cors());
-app.use(express.static('../front-end/public'));
-app.use(express.static('../front-end/js'));
-app.use(express.static('../front-end/images'));
-
-//creating database to store user records
-const createUserTable = `
-CREATE TABLE IF NOT EXISTS users (
-  id INT AUTO_INCREMENT,
-  name VARCHAR(50),
-  email VARCHAR(50) UNIQUE,
-  password VARCHAR(50),
-  fitness_plan VARCHAR(50),
-  PRIMARY KEY(id)
-);
-`;
-
-db.query(createUserTable, (err, result) => {
-    if (err) throw err;
-    console.log("User table created...");
-  });
-
-db.connect((err) => {
-    if(err) throw err;
-    console.log(`Connected to database`)
-});
-
-
-
-//POST method to database when successfully signing up
-
-app.post("/api/user/create", (req, res) => {
-  const { name, email, password, fitness_plan } = req.body;
-  
-  console.log("Received sign-up request with data: ", req.body);
-
-  const createUserQuery = `
-    INSERT INTO users (name, email, password, fitness_plan)
-    VALUES (?, ?, ?, ?)
-  `;
-
-  db.query(createUserQuery, [name, email, password, fitness_plan], (err, result) => {
-    if (err) throw err;
-    console.log("User added to the database: ", result);
-    res.send("You have successfully created an account");
-  });
-});
-
-const getUserFitnessPlan = (userId) => {
-  return new Promise((resolve, reject) => {
-    const query = `SELECT fitness_plan FROM users WHERE id = ?`;
-    db.query(query, [userId], (err, result) => {
-      if (err) {
-        reject(err);
-      } else {
-        resolve(result[0].fitness_plan);
-      }
+      db.run(createUserTable, (err, result) => {
+        if (err) {
+          reject(err);
+        } else {
+          console.log("User table created...");
+          resolve();
+        }
+      });
     });
-  });
-};
 
-app.post("/api/user/login", (req, res) => {
-  const { email, password } = req.body;
-  
-  // Simulate user authentication (replace with your authentication logic)
-  const query = 'SELECT id, fitness_plan FROM users WHERE email = ? AND password = ?';
-  db.query(query, [email, password], (err, result) => {
-    if (err) {
-      console.error('Error fetching user:', err);
-      return res.status(500).send("Internal Server Error");
-    }
-    if (result.length > 0) {
-      const userId = result[0].id;
-      const fitnessPlan = result[0].fitness_plan;
+    app.set('view engine', 'ejs');
 
+    app.use(
+      session({
+        secret: "123",
+        resave: false,
+        saveUninitialized: true,
+        cookie: { secure: false },
+      })
+    );
+
+    //routes
+    const fitnessPlanRoute = require('./routes/fitnessPlan');
+    const homeRoute = require('./routes/home');
+    const logOutRoute = require('./routes/log-out');
+    
+    //receives front-end html web pages and uses them in local server
+    app.use(bodyParser.urlencoded({ extended: false }));
+    app.use(bodyParser.json());
+    app.use(cors());
+    app.use(express.static('../front-end/public'));
+    app.use(express.static('../front-end/js'));
+    app.use(express.static('../front-end/images'));
+
+    //POST method to database when successfully signing up
+
+    app.post("/api/user/create", (req, res) => {
+      const { name, email, password, fitness_plan } = req.body;
       
+      console.log("Sign-up request data: ", req.body);
 
-      // Store user information in the session
-      req.session.userId = userId;
-      req.session.fitnessPlan = fitnessPlan;
-  
-      getUserFitnessPlan(userId)
-        .then((fitnessPlan) => {
-          if (fitnessPlan === 'beginner') {
-            res.send("/beginner");
-          } else if (fitnessPlan === 'intermediate') {
-            res.send("/intermediate");
-          } else if (fitnessPlan === 'pro') {
-            res.send("/pro");
+      const createUserQuery = `
+        INSERT INTO users (name, email, password, fitness_plan)
+        VALUES (?, ?, ?, ?)
+      `;
+
+      db.run(createUserQuery, [name, email, password, fitness_plan], (err, result) => {
+        if (err) throw err;
+        console.log("User added to the database:");
+        res.send("You have successfully created an account");
+      });
+    });
+
+    const getUserFitnessPlan = (userId) => {
+      return new Promise((resolve, reject) => {
+        const query = `SELECT fitness_plan FROM users WHERE id = ?`;
+        db.get(query, [userId], (err, result) => {
+          if (err) {
+            reject(err);
+            return;
           }
-        })
-        .catch((err) => {
-          console.error('Error fetching user fitness plan:', err);
-          res.status(500).send("Internal Server Error");
+
+          if (!result) {
+            reject(new Error('Error user not found'));
+            return;
+          }
+          resolve(result.fitness_plan);
         });
-    } else {
-      // If no user found with the provided credentials
-      res.status(401).send("Invalid email or password");
-    }
-  });
-});
+      });
+    };
 
-const sessionCheck = (req, res, next) => {
-  if (!req.session.userId) {
-    return res.status(401).send("Unauthorized");
+    //handles logins
+    app.post("/api/user/login", (req, res) => {
+      const { email, password } = req.body;
+
+      const query = 'SELECT id, fitness_plan FROM users WHERE email = ? AND password = ?';
+      db.all(query, [email, password], (err, result) => {
+        if (err) {
+          console.error('Error fetching user:', err);
+          return res.status(500).send("Internal Server Error");
+        }
+        if (result.length > 0) {
+          const userId = result[0].id;
+          const fitnessPlan = result[0].fitness_plan;
+
+          // Store user information in the session
+          req.session.userId = userId;
+          req.session.fitnessPlan = fitnessPlan;
+          
+          //page displayed depending on user's fitness plan
+          getUserFitnessPlan(userId)
+            .then((fitnessPlan) => {
+              if (fitnessPlan === 'beginner') {
+                res.send("/beginner");
+              } else if (fitnessPlan === 'intermediate') {
+                res.send("/intermediate");
+              } else if (fitnessPlan === 'pro') {
+                res.send("/pro");
+              }
+            })
+            .catch((err) => {
+              console.error('Error fetching user fitness plan:', err);
+              res.status(500).send("Internal Server Error");
+            });
+        } else {
+          //handles error
+          res.status(401).send("Invalid email or password");
+        }
+      });
+    });
+
+    //checks if session start or not.
+    const sessionCheck = (req, res, next) => {
+      if (!req.session.userId) {
+        return res.status(401).send("Unauthorized");
+      }
+      next();
+    };
+
+    app.get("/profile", sessionCheck, (req, res) => {
+      res.send("Welcome to your profile!");
+    });
+
+    //deletes cache so users cannot press left arrow on browser to go back to user page and are instead redirected to login page
+    app.use((req, res, next) => {
+      res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
+      res.setHeader('Pragma', 'no-cache');
+      res.setHeader('Expires', '0');
+      next();
+    });
+    
+    app.use('/fitnessPlan', fitnessPlanRoute);
+
+    app.use('/home', homeRoute);
+
+    app.use('/log-out', logOutRoute)
+
+
+    app.listen(port, () => {
+      console.log(`Server is running on localhost ${port}`);
+    });
+  } catch (err) {
+    console.error('Error setting up the database:', err);
   }
-  next();
-};
-
-//Test accounts for each Fitness plan
-
-db.query(`INSERT IGNORE INTO users (name, email, password, fitness_plan) VALUES ('Bob', 'hello@gmail.com', '123', 'beginner')`, (err, result) => {
-  if (err) throw err;
-  console.log("Test beginner");
-});
-
-
-app.get("/", (req, res) => {
-    res.send("Hello");
-});
-
-app.get("/profile", sessionCheck, (req, res) => {
-  // This route will only be accessible if the user is authenticated
-  res.send("Welcome to your profile!");
-});
-
-app.use('/fitnessPlan', fitnessPlanRoute);
-
-
-
-app.use('/home', homeRoutes);
-app.use('/log-out', logoutRoutes);
-
-
-
-app.listen(port, () => {
-    console.log(`Server is running on localhost ${port}`);
-});
-
+})();
 
 

@@ -10,11 +10,11 @@ router.get('/', async (req, res) => {
         const getUserFitnessPlan = (userId) => {
             return new Promise((resolve, reject) => {
               const query = `SELECT fitness_plan FROM users WHERE id = ?`;
-              db.query(query, [userId], (err, result) => {
+              db.all(query, [userId], (err, result) => {
                 if (err) {
                   reject(err);
                 } else {
-                  resolve(result[0].fitness_plan);
+                  resolve(result.fitness_plan);
                 }
               });
             });
