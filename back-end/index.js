@@ -5,6 +5,7 @@ const cors = require("cors");
 const port = 3000;
 const session = require('express-session');
 const db = require('./database');
+const review_db = require("./database");
 
 const app = express();
 
@@ -22,11 +23,30 @@ const app = express();
         );
       `;
 
+      const createFeedbackTable = `
+        CREATE TABLE IF NOT EXISTS feedback (
+          id INTEGER PRIMARY KEY AUTOINCREMENT,
+          name VARCHAR(50),
+          post_content TEXT,
+          post_date TIMESTAMP
+        );
+      `;  
+
+
       db.run(createUserTable, (err, result) => {
         if (err) {
           reject(err);
         } else {
           console.log("User table created...");
+          resolve();
+        }
+      });
+
+      db.run(createFeedbackTable, (err, result) => {
+        if (err) {
+          reject(err);
+        } else {
+          console.log("Review table created...");
           resolve();
         }
       });

@@ -6,6 +6,7 @@
         <title>ShapeShift - Feedback Page</title>
         <link href="/styles/styles.css" rel="stylesheet" type="text/css" />
         <script src="/script.js"></script>
+        <style>main {height: 100vh; display: flex; justify-content: center; align-items: center;} .feedback{display: flex; justify-content: center; position: absolute; width: 65%; height: 60%; top: 40%; left: 50%; transform: translate(-50%, -50%); z-index: 1;} #feedback-form h2 {color: #1d571d;} #feedback-form { margin-top: 5%; display: flex; flex-direction: column; justify-content: center; align-items: center; width: 100%; height: 100%; padding: 20px; border: 1px solid #ccc; border-radius: 5px; background-color: white; box-shadow: 0px 0px 10px 1px rgba(0,0,0,0.2); position: relative; } form input[type="text"] { width: 80%; padding: 10px; margin-top: 5px; font-size: 16px; border: 1px solid #ccc; border-radius: 5px; } form button [type="submit"] {width: 80%; padding: 10px; margin-top: 80px; font-size: 16px; border: none; border-radius: 5px; background-color: green; color: white; cursor: pointer; transition: background-color 0.3s ease;} form button [type="submit"]:hover {background-color: #68c268;}</style>
     </head>    
     <body>
         <header>
@@ -19,13 +20,24 @@
                     <button class="dropbtn" onclick="toggleDropdown()">Menu</button>
                     <div class="dropdown-content" id="myDropdown">
                         <a href="feedback.html">Feedback</a>
-                        <a href="/fitnessPlan">Information</a>
+                        <a href="/fitnessPlan">Fitness Plan</a>
                         <a href="calculator.html">Calorie Calculator</a>
                         <a href="/log-out">Log out</a>
                     </div>
                 </div>
             </nav>
         </header>
+        <main>
+            <div class="feedback">
+                <form id ="feedback-form">
+                    <h2>Reviews/Feedback Form</h2>
+                    <br>
+                    <input type="text" id="content" name="content" required>
+                    <br>
+                    <button type="submit">Add post</button>
+                </form>
+            </div>
+        </main>
 
     </body>
 
