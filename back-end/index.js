@@ -5,11 +5,12 @@ const cors = require("cors");
 const port = 3000;
 const session = require('express-session');
 const db = require('./database');
+const review_db = require("./database");
 
 const app = express();
 
 //creates table in database before running this code
-(async () => {
+(async (err) => {
   try {
     await new Promise((resolve, reject) => {
       const createUserTable = `
@@ -22,11 +23,30 @@ const app = express();
         );
       `;
 
+      const createFeedbackTable = `
+        CREATE TABLE IF NOT EXISTS feedback (
+          id INTEGER PRIMARY KEY AUTOINCREMENT,
+          name VARCHAR(50),
+          post_content TEXT,
+          post_date TIMESTAMP
+        );
+      `;  
+
+
       db.run(createUserTable, (err, result) => {
         if (err) {
           reject(err);
         } else {
           console.log("User table created...");
+          resolve();
+        }
+      });
+
+      db.run(createFeedbackTable, (err, result) => {
+        if (err) {
+          reject(err);
+        } else {
+          console.log("Review table created...");
           resolve();
         }
       });
@@ -47,6 +67,7 @@ const app = express();
     const fitnessPlanRoute = require('./routes/fitnessPlan');
     const homeRoute = require('./routes/home');
     const logOutRoute = require('./routes/log-out');
+    const feedbackRoute = require('./routes/feedback');
     
     //receives front-end html web pages and uses them in local server
     app.use(bodyParser.urlencoded({ extended: false }));
@@ -157,7 +178,9 @@ const app = express();
 
     app.use('/home', homeRoute);
 
-    app.use('/log-out', logOutRoute)
+    app.use('/log-out', logOutRoute);
+
+    app.use('/feedback', feedbackRoute);
 
 
     app.listen(port, () => {

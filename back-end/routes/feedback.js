@@ -19,30 +19,12 @@ const getUserById = (userId, db) => {
     });
 };
 
-
 router.get('/', async (req, res) => {
     try {
-        // Get the userId from the session
         const userId = req.session.userId;
-        if (!userId) {
-            // Redirect to login page if user is not logged in
-            res.redirect("/login.html");
-            return;
-        }
-
-        // Fetch the user's name from the database
-        const db = require("../database"); //database connection
+        const db = require("../database"); // Import the database connection
         const userName = await getUserById(userId, db);
-        const fullName = userName.split(" ");
-        const firstName = fullName[0]
-
-        if (userName) {
-            // Render the home page with the user's name
-            res.render("home", { userName: firstName });
-        } else {
-            // User not found in the database
-            res.status(404).send("User not found");
-        }
+        res.render('feedback', { userName: userName });
     } catch (error) {
         console.error("Error fetching user's name:", error);
         res.status(500).send("Internal Server Error");
