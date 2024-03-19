@@ -67,6 +67,7 @@ const app = express();
     const fitnessPlanRoute = require('./routes/fitnessPlan');
     const homeRoute = require('./routes/home');
     const logOutRoute = require('./routes/log-out');
+    const feedbackRoute = require('./routes/feedback');
     
     //receives front-end html web pages and uses them in local server
     app.use(bodyParser.urlencoded({ extended: false }));
@@ -177,7 +178,9 @@ const app = express();
 
     app.use('/home', homeRoute);
 
-    app.use('/log-out', logOutRoute)
+    app.use('/log-out', logOutRoute);
+
+    app.use('/feedback', feedbackRoute);
 
 
     app.listen(port, () => {
