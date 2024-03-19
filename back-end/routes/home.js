@@ -31,10 +31,10 @@ router.get('/', async (req, res) => {
         }
 
         // Fetch the user's name from the database
-        const db = require("../database"); // Import the database connection
+        const db = require("../database"); //database connection
         const userName = await getUserById(userId, db);
-        fullName = userName.split(" ");
-        firstName = fullName[0]
+        const fullName = userName.split(" ");
+        const firstName = fullName[0]
 
         if (userName) {
             // Render the home page with the user's name

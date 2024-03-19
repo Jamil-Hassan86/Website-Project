@@ -10,7 +10,7 @@ const review_db = require("./database");
 const app = express();
 
 //creates table in database before running this code
-(async () => {
+(async (err) => {
   try {
     await new Promise((resolve, reject) => {
       const createUserTable = `
