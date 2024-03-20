@@ -9,16 +9,53 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: green;
+    background-color: rgb(255, 255, 255);
     padding: 5px;
     width: 100%;
     position: fixed;
     z-index: 999;
 }
 
-
 h1 {
     color: black;
+}
+
+.logo {
+    color: black;
+    font-size: 25px;
+    text-decoration: none;
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 1000;
+    font-style: italic;
+}
+
+.shape-logo {
+    margin: 10px;
+    margin-bottom: 5px;
+    position: relative;
+}
+.shape-logo::before{
+    content: "";
+    position: absolute;
+    width: 45%;
+    height: 1px;
+    bottom: 0;
+    left: 0%;
+    border-bottom: 1px solid red;
+    border-width: 5px;
+}
+.shift-logo{
+    margin: 1px;
+    margin-top: 1px;
+    margin-left:50px;
+    border-bottom: 1px solid rgb(0, 143, 83);
+    border-width: 5px;
+}
+
+.logo-container {
+    padding-left: 50px;
+    margin-top: -12px;
 }
 
 /* Dropdown wrapper */
@@ -30,7 +67,7 @@ h1 {
 /* Dropdown button */
 .dropbtn {
     background-color: transparent;
-    color: white;
+    color: rgb(0, 0, 0);
     font-size: 16px;
     border: none;
     cursor: pointer;
