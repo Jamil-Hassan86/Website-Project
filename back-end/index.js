@@ -6,6 +6,7 @@ const port = 3000;
 const session = require('express-session');
 const db = require('./database');
 const review_db = require("./database");
+const { default: test } = require("node:test");
 
 const app = express();
 
@@ -181,6 +182,27 @@ const app = express();
     app.use('/log-out', logOutRoute);
 
     app.use('/feedback', feedbackRoute);
+
+    
+    const testAccounts = async (err) => {
+      try {
+        const testing = [
+          { name: 'Beginner', email: 'Beginner@example.com', password: '123', fitness_plan: 'beginner' },
+          { name: 'Intermediate', email: 'Intermediate@example.com', password: '123', fitness_plan: 'intermediate' },
+          { name: 'Pro', email: 'Pro@example.com', password: '12', fitness_plan: 'pro' }
+        ];
+        for (const test of testing) {
+          await db.run('INSERT INTO users (name, email, password, fitness_plan) VALUES (?, ?, ?, ?)', [test.name, test.email, test.password, test.fitness_plan]);
+        }
+        console.log("Created accounts");
+        } catch (error) {
+          console.error("Error", error);
+        }
+    };
+
+    await testAccounts();
+
+
 
 
     app.listen(port, () => {
