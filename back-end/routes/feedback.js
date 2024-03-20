@@ -2,13 +2,6 @@ const express = require('express');
 const router = express.Router();
 const { db } = require('../database');
 
-const sessionCheck = (req, res, next) => {
-    if (!req.session.userId) {
-      return res.status(401).send("Unauthorized");
-    }
-    next();
-};
-
 const getUserById = (userId, db) => {
     return new Promise((resolve, reject) => {
         const query = "SELECT name FROM users WHERE id = ?";
@@ -26,14 +19,9 @@ const getUserById = (userId, db) => {
     });
 };
 
-
-
-router.get('/', sessionCheck, async (req, res) => {
+router.get('/', async (req, res) => {
     try {
         const userId = req.session.userId;
-        if(!userId){
-            res.redirect('/');
-        }
         const db = require("../database"); // Import the database connection
         const userName = await getUserById(userId, db);
         res.render('feedback', { userName: userName });
