@@ -10,14 +10,18 @@ header {
     justify-content: space-between;
     align-items: center;
     background-color: rgb(255, 255, 255);
-    padding: 30px;
-    width: 99.5%;
-    position: fixed;
+    width: 100%;
+    position: absolute;
     
 }
 
 h1 {
     color: black;
+}
+
+nav {
+    display: flex;
+    
 }
 
 .logo {
