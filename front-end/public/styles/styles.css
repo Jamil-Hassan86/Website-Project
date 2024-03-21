@@ -10,13 +10,17 @@ header {
     justify-content: space-between;
     align-items: center;
     background-color: rgb(255, 255, 255);
-    width: 100%;
+    width: 100vw;
     position: fixed;
 }
 
 h1 {
     color: black;
 }
+
+main{
+    background-color: rgb(14, 67, 116);
+}    
 
 nav {
     display: flex;
@@ -128,7 +132,7 @@ nav {
     display: none;
 }
 
-@media screen and (max-width: 936px) {
+@media screen and (max-width: 1000px) {
     /* Dropdown wrapper */
     .dropdown {
         position: relative;
