@@ -192,7 +192,7 @@ const app = express();
           { name: 'Pro', email: 'Pro@example.com', password: '12', fitness_plan: 'pro' }
         ];
         for (const test of testing) {
-          await db.run('INSERT INTO users (name, email, password, fitness_plan) VALUES (?, ?, ?, ?)', [test.name, test.email, test.password, test.fitness_plan]);
+          await db.run('INSERT OR IGNORE INTO users (name, email, password, fitness_plan) VALUES (?, ?, ?, ?)', [test.name, test.email, test.password, test.fitness_plan]);
         }
         console.log("Created accounts");
         } catch (error) {

@@ -59,6 +59,10 @@ h1 {
     border-width: 5px;
 }
 
+nav {
+    display: flex; justify-content: center;
+}
+
 .nav-links a, .sign-up a{
     font-family: "Montserrat", sans-serif;
     font-weight: bold;
@@ -95,53 +99,100 @@ h1 {
     align-items: center;
     gap: 10px;
 }
-/* Dropdown wrapper */
+
 .dropdown {
-    position: relative;
-    margin-top: auto;
-}
-
-/* Dropdown button */
-.dropbtn {
-    background-color: transparent;
-    color: rgb(0, 0, 0);
-    font-size: 16px;
-    border: none;
-    cursor: pointer;
-    padding: 0;
-    margin: 0;
-    position: relative;
-    display: flex;
-    width: auto;
-    height: auto;
-    margin-right: 10px;
-
-}
-
-/* Dropdown content (hidden by default) */
-.dropdown-content {
     display: none;
-    position: absolute;
-    background-color: #f9f9f9;
-    min-width: 400%;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 2;
-    left: -280%;
-    top: 155%;
 }
 
-/* Links inside the dropdown */
-.dropdown-content a {
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
+@media screen and (max-width: 830px) {
+        
+
+    /* Dropdown wrapper */
+    .dropdown {
+        position: relative;
+        margin-top: auto;
+        display: contents;
+    }
+
+    /* Dropdown button */
+    .dropbtn {
+        background-color: transparent;
+        color: rgb(0, 0, 0);
+        font-size: 16px;
+        border: none;
+        cursor: pointer;
+        padding: 0;
+        margin: 0;
+        position: relative;
+        display: flex;
+        width: auto;
+        height: auto;
+        margin-right: 10px;
+
+    }
+
+    /* Dropdown content */
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #f9f9f9;
+        min-width: 400%;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 2;
+        left: -280%;
+        top: 155%;
+    }
+
+    /* Links inside the dropdown */
+    .dropdown-content a {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+    }
+
+    /* Change color of dropdown links on hover */
+    .dropdown-content a:hover {
+        background-color: #ddd;
+    }
+
+    .nav-links a, .sign-up a{
+        display: none;
+        font-family: "Montserrat", sans-serif;
+        font-weight: bold;
+        font-size: 16px;
+        color: black;
+        text-decoration: none;
+    } 
+    
+    .nav-links {
+        list-style: none;
+    }
+    .nav-links li {
+        display: inline-block;
+        padding: 0px 20px;
+    }
+    .nav-links li a{
+        transition: all 0.3s ease 0s;
+    }
+    
+    .nav-links li a:hover{
+        color: green;
+    }
+    
+    .nav-links, .sign-up{
+        font-family: "Montserrat", sans-serif;
+        font-weight: 500;
+        font-size: 16px;
+        color: black;
+        text-decoration: none;
+    } 
+    
+    .sign-up{
+        display: none;
+        align-items: center;
+        gap: 10px;
+    }
+
 }
-
-/* Change color of dropdown links on hover */
-.dropdown-content a:hover {
-    background-color: #ddd;
-}
-
-
 
