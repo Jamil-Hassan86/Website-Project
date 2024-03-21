@@ -11,10 +11,6 @@ header {
     align-items: center;
     background-color: rgb(255, 255, 255);
     width: 100vw;
-<<<<<<< HEAD
-    
-=======
->>>>>>> 6bb98d13a8fb0f54121680f684106ff6ce5d510e
 }
 
 h1 {
@@ -23,7 +19,7 @@ h1 {
 
 nav {
     display: flex;
-    
+    justify-content: center;
 }
 
 .logo {
@@ -103,13 +99,13 @@ nav {
 .sign-up{
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 20px;
     position: relative;
     right: 20px;
+    top: -2px;
 }
 
-<<<<<<< HEAD
-=======
 .sign-up-text{
     transition: all 0.5s ease;
 }
@@ -127,13 +123,11 @@ nav {
 }
 
 /* Dropdown wrapper */
->>>>>>> 6bb98d13a8fb0f54121680f684106ff6ce5d510e
 .dropdown {
     display: none;
 }
 
-<<<<<<< HEAD
-@media screen and (max-width: 830px) {
+@media screen and (max-width: 936px) {
     /* Dropdown wrapper */
     .dropdown {
         position: relative;
@@ -160,62 +154,33 @@ nav {
         width: auto;
         height: auto;
         margin-right: 10px;
-=======
-/* Dropdown button */
-.dropbtn {
-    background-color: transparent;
-    color: rgb(0, 0, 0);
-    font-size: 16px;
-    border: none;
-    cursor: pointer;
-    padding: 0;
-    margin: 0;
-    position: relative;
-    display: flex;
-    width: auto;
-    height: auto;
-    margin-right: 10px;
->>>>>>> 6bb98d13a8fb0f54121680f684106ff6ce5d510e
 
-}
+    }
 
-/* Dropdown content (hidden by default) */
-.dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #f9f9f9;
-    min-width: 400%;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 2;
-    left: -280%;
-    top: 155%;
-}
+    /* Dropdown content */
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #f9f9f9;
+        min-width: 400%;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 2;
+        left: -300%;
+        top: 315%;
+    }
 
-/* Links inside the dropdown */
-.dropdown-content a {
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-}
+    /* Links inside the dropdown */
+    .dropdown-content a {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+    }
 
-<<<<<<< HEAD
     /* Change color of dropdown links on hover */
     .dropdown-content a:hover {
-        background-color: #ddd;
+        background-color: #ef6464;
     }
-=======
-/* Change color of dropdown links on hover */
-.dropdown-content a:hover {
-    background-color: #ddd;
-}
-
-/* Change logo of site to image and links back to home page */
-.logo {
-    display: block;
-    height: auto; /* Maintain aspect ratio */
-    width: auto;
->>>>>>> 6bb98d13a8fb0f54121680f684106ff6ce5d510e
 }
 
 main{

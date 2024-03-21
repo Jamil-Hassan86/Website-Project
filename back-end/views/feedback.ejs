@@ -10,19 +10,26 @@
     </head>    
     <body>
         <header>
-            <div class="logo-container">
-                <a href="/" class="logo">
-                    <img src ="Logo.jpg" alt ="logo">
-                </a> 
-            </div>
+            <a href="/" class="logo">
+                <p class="shape-logo">SHAPE</p>
+                <p class="shift-logo">SHIFT</p>
+            </a> 
             <nav>
+                <ul class="nav-links">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/calculator.html">BMI Calculator</a></li>
+                    <li><a href="/feedback">Reviews</a></li>
+                    <li><a href="/about.html">About</a></li>
+                </ul>
+
                 <div class="dropdown">
                     <button class="dropbtn" onclick="toggleDropdown()">Menu</button>
                     <div class="dropdown-content" id="myDropdown">
+                        <a href="calculator.html">BMI Calculator</a>
                         <a href="/feedback">Feedback</a>
-                        <a href="/fitnessPlan">Fitness Plan</a>
-                        <a href="calculator.html">Calorie Calculator</a>
-                        <a href="/log-out">Log out</a>
+                        <a href="/about.html">About</a>
+                        <a href="/signup.html">Sign Up</a>
+                        <a href="/login.html">Log In</a>
                     </div>
                 </div>
             </nav>
