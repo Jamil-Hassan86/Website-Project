@@ -115,6 +115,18 @@ const app = express();
       });
     };
 
+    app.post("/submit-feedback", async (req, res) => {
+      const { name, feedbackContent } = req.body;
+  
+      try {
+          await db.run('INSERT INTO feedback (name, post_content, post_date) VALUES (?, ?, CURRENT_TIMESTAMP)', [name, feedbackContent]);
+          console.log(req.body);
+          res.redirect('/feedback');
+      } catch (error) {
+          console.error("Error posting", error);
+      }  
+    });
+
     //handles logins
     app.post("/api/user/login", (req, res) => {
       const { email, password } = req.body;

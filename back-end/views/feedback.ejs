@@ -6,17 +6,17 @@
         <title>Feedback Page</title>
         <link href="/styles/styles.css" rel="stylesheet" type="text/css" />
         <script src="/script.js"></script>
-        <style>main {height: 100vh; display: flex; justify-content: center; align-items: center;} .feedback{display: flex; justify-content: center; position: absolute; width: 65%; height: 65%; top: 40%; left: 50%; transform: translate(-50%, -50%); z-index: 1;} #feedback-form h2 {color: #1d571d;} #feedback-form { margin-top: 5%; display: flex; flex-direction: column; justify-content: center; align-items: center; width: 100%; height: 100%; padding: 20px; border: 1px solid #ccc; border-radius: 5px; background-color: white; box-shadow: 0px 0px 10px 1px rgba(0,0,0,0.2); position: relative; } form input[type="text"] { width: 80%; height: 40%; padding: 10px; margin-top: 5px; font-size: 16px; border: 1px solid #ccc; border-radius: 5px; } form button[type="enter"] { width: 80%; padding: 10px; margin-top: 80px; font-size: 16px; border: none; border-radius: 5px; background-color: green; color: white; cursor: pointer; transition: background-color 0.3s ease;} form button[type="enter"]:hover {background-color: #68c268;} form .ratings {display: flex; justify-content: space-evenly; width: 100%; position:  relative; top: 30px;} form .ratings button {width: 40px; height: 40px; border-radius: 50%; border: none; background-color: #ccc; cursor: pointer; transition: background-color 0.3s;} .ratings button:hover {background-color: #c879f0;} .ratings button:focus{outline: 3px; box-shadow: 0 0 5px #c879f0;} .ratings button:active, .ratings button.active {outline: none; background-color: #c879f0; box-shadow: 0 0 5px #c879f0;}</style>
+        <style>main {height: 100vh; display: flex; justify-content: center; align-items: center;} .feedback{display: flex; justify-content: center; position: absolute; width: 65%; height: 65%; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 1;} #feedback-form h2 {color: #1d571d;} #feedback-form { margin-top: 5%; display: flex; flex-direction: column; justify-content: center; align-items: center; width: 100%; height: 100%; padding: 20px; border: 1px solid #ccc; border-radius: 5px; background-color: white; box-shadow: 0px 0px 10px 1px rgba(0,0,0,0.2); position: relative; } form textarea { width: 100%; height: 60%; padding: 1%; font-size: 18px; border: 1px solid #ccc; border-radius: 5px; position: relative; top: -20px;} form button[type="enter"] { width: 80%; padding: 10px; margin-top: 80px; font-size: 16px; border: none; border-radius: 5px; background-color: green; color: white; cursor: pointer; transition: background-color 0.3s ease;} form button[type="enter"]:hover {background-color: #68c268;} form .ratings {display: flex; justify-content: space-evenly; width: 100%; position:  relative; top: 30px;} form .ratings button {width: 40px; height: 40px; border-radius: 50%; border: none; background-color: #ccc; cursor: pointer; transition: background-color 0.3s;} .ratings button:hover {background-color: #c879f0;} .ratings button:focus{outline: 3px; box-shadow: 0 0 5px #c879f0;} .ratings button:active, .ratings button.active {outline: none; background-color: #c879f0; box-shadow: 0 0 5px #c879f0;}</style>
     </head>    
     <body>
         <header>
-            <a href="/" class="logo">
+            <a href="/home" class="logo">
                 <p class="shape-logo">SHAPE</p>
                 <p class="shift-logo">SHIFT</p>
             </a> 
             <nav>
                 <ul class="nav-links">
-                    <li><a href="/">Home</a></li>
+                    <li><a href="/home">Home</a></li>
                     <li><a href="/calculator.html">BMI Calculator</a></li>
                     <li><a href="/feedback">Reviews</a></li>
                     <li><a href="/about.html">About</a></li>
@@ -33,15 +33,19 @@
                     </div>
                 </div>
             </nav>
+            <div class="sign-up">
+                <a class="sign-up-text" href="/log-out">Log Out</a>
+                <a href="/profile"><img class="profile" src="profile.svg" alt="Profile icon"></a>
+            </div>
         </header>
         <main>
             <div class="feedback">
-                <form id ="feedback-form">
+                <form id ="feedback-form" action ="/submit-feedback" method="POST">
                     <h2>Reviews/Feedback Form</h2>
                     <br>
-                    <h3><%= userName %></h3>
+                    <h3 id="name"><%= userName %></h3>
                     <br>
-                    <input type="text" id="content" name="content" required>
+                    <textarea id="feedback-box" name="feedback-box" required></textarea>
                     <br>
                     <div class="ratings">
                         <button type="button" value="1">1</button>
@@ -51,7 +55,7 @@
                         <button type="button" value="5">5</button>
                     </div>
                     <br>
-                    <button type="enter">Add post</button>
+                    <button type="submit">Add post</button>
                 </form>
             </div>
         </main>

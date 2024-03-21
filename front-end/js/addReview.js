@@ -5,16 +5,42 @@ var lastButton = null;
 buttons.forEach(button => {
     button.addEventListener('click', () => {
     const value = button.value;
-    console.log(value);
     lastButton = value;
     buttons.forEach(btn => btn.classList.remove('active'));
         button.classList.add('active');
    });    
 });
 
-reviewForm.addEventListener("enter", async (event) => {
+reviewForm.addEventListener("submit", async (event) => {
     event.preventDefault();
-    const name = document.getElementById("name");
-    const content = document.getElementById("content");
+    const name = document.getElementById("name").value;
+    const content = document.getElementById("feedback-box").value;
+    const formData = {
+        name: name,
+        content: content,
+        rating: lastButton // Include the selected rating value
+    };
+
+    try {
+        const response = await fetch('/submit-feedback', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(formData)
+            
+        });
+
+        if (response.ok) {
+            console.log("Review submitted successfully");
+            window.location.href = "/feedback";
+        } else {
+            console.error("Failed to submit review");
+            
+        }
+    } catch (error) {
+        console.error("Error submitting review:", error);
+    
+    }
     
 });

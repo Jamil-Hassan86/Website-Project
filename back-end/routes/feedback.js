@@ -24,11 +24,14 @@ router.get('/', async (req, res) => {
         const userId = req.session.userId;
         const db = require("../database"); // Import the database connection
         const userName = await getUserById(userId, db);
-        res.render('feedback', { userName: userName });
+        const feedback = await db.all('SELECT * FROM feedback ORDER BY post_date DESC');
+        console.log(feedback);
+        res.render('feedback', { userName: userName, feedback: feedback });
     } catch (error) {
         console.error("Error fetching user's name:", error);
         res.status(500).send("Internal Server Error");
     }
 });
+
 
 module.exports = router;
