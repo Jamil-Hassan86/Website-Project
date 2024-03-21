@@ -11,16 +11,13 @@ header {
     align-items: center;
     background-color: rgb(255, 255, 255);
     width: 100vw;
-    position: fixed;
+    position: relative;
 }
 
 h1 {
     color: black;
 }
-
-main{
-    background-color: rgb(14, 67, 116);
-}    
+ 
 
 nav {
     display: flex;
@@ -137,7 +134,7 @@ nav {
     .dropdown {
         position: relative;
         margin-top: auto;
-        display: block;
+        display: inline-block;
     }
 
     .nav-links, .sign-up{
@@ -169,7 +166,7 @@ nav {
         background-color: #f9f9f9;
         min-width: 400%;
         box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-        z-index: 2;
+        z-index: 100;
         left: -300%;
         top: 315%;
     }
@@ -180,16 +177,18 @@ nav {
         padding: 12px 16px;
         text-decoration: none;
         display: block;
+        z-index: 2;
     }
 
     /* Change color of dropdown links on hover */
     .dropdown-content a:hover {
         background-color: #ef6464;
+        display: block;
     }
 }
 
 main{
     background-image: url("images/background-image.jpg");
-    height: 100px
+    height: 100px;
 }
 
