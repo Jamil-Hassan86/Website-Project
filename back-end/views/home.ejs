@@ -7,7 +7,7 @@
         <link href="/styles/styles.css" rel="stylesheet"/>
         <script src="/script.js"></script>
         <style>
-            .main {display: flex; height: 120vh; justify-content: center; position:  relative; top: 13vh}
+            .main {display: flex; height: 120vh; justify-content: center;}
             main { display: flex; justify-content: center; align-items: center; width: 100%; height: 100%; overflow: hidden; max-width: 100%;}
             .opening { position: absolute; top: 30%; left: 50%; transform: translate(-50%, -50%); text-align: center; z-index: 1; }
             .opening h1 { color: red; font-size: 2rem;}
@@ -22,18 +22,29 @@
                 <p class="shift-logo">SHIFT</p>
             </a> 
             <nav>
+                <ul class="nav-links">
+                    <li><a href="/home">Home</a></li>
+                    <li><a href="/calculator.html">BMI Calculator</a></li>
+                    <li><a href="/feedback">Reviews</a></li>
+                    <li><a href="/about.html">About</a></li>
+                    <li><a href="/fitnessPlan">Fitness Plan</a></li>
+                </ul>
+
                 <div class="dropdown">
                     <button class="dropbtn" onclick="toggleDropdown()">Menu</button>
                     <div class="dropdown-content" id="myDropdown">
-                        <a href="/feedback">Feedback</a>
-                        <a href="/fitnessPlan">Fitness Plan</a>
                         <a href="calculator.html">BMI Calculator</a>
+                        <a href="/feedback">Feedback</a>
+                        <a href="/about.html">About</a>
+                        <a href="/signup.html">Sign Up</a>
+                        <a href="/log-out">Log Out</a>
+
                     </div>
                 </div>
             </nav>
             <div class="sign-up">
-                <a class="sign-up-text" href="">Sign up</a>
-                <img class="profile" src="profile.svg">
+                <a class="sign-up-text" href="/log-out">Log Out</a>
+                <a href="/profile"><img class="profile" src="profile.svg" alt="Profile icon"></a>
             </div>
         </header>
         <div class="main">

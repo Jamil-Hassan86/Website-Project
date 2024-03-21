@@ -10,20 +10,33 @@
     </head>
     <body>
         <header>
-            <div class="logo-container">
-                <a href="/" class="logo">
-                    <img src ="Logo.jpg" alt ="logo">
-                </a> 
-            </div>
+            <a href="/" class="logo">
+                <p class="shape-logo">SHAPE</p>
+                <p class="shift-logo">SHIFT</p>
+            </a> 
             <nav>
+                <ul class="nav-links">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/calculator.html">BMI Calculator</a></li>
+                    <li><a href="/feedback">Reviews</a></li>
+                    <li><a href="/about.html">About</a></li>
+                </ul>
+
                 <div class="dropdown">
                     <button class="dropbtn" onclick="toggleDropdown()">Menu</button>
                     <div class="dropdown-content" id="myDropdown">
-                        <a href="signup.html">Sign Up</a>
-                        <a href="login.html">Log In</a>
+                        <a href="calculator.html">BMI Calculator</a>
+                        <a href="/feedback">Feedback</a>
+                        <a href="/about.html">About</a>
+                        <a href="/signup.html">Sign Up</a>
+                        <a href="/login.html">Log In</a>
                     </div>
                 </div>
             </nav>
+            <div class="sign-up">
+                <a class="sign-up-text" href="/signup.html">Sign up</a>
+                <img class="profile" src="profile.svg">
+            </div>
         </header>
         <main>
             <div class="main-image">
@@ -36,6 +49,8 @@
                         <br>
                         <label for="password">Password:</label>
                         <input type="password" id="password" name="password" required>
+                        <br>
+                        <a href="signup.html">No account? Sign up here.</a>
                         <br>
                         <button type="Enter">Log In</button>
                     </form>
