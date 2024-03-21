@@ -1,4 +1,4 @@
-function calculateBMI() {
+function calculate() {
  
     /* Getting input from user into height variable.
     Input is string so typecasting is necessary. */

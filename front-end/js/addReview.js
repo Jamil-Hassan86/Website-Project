@@ -13,13 +13,16 @@ buttons.forEach(button => {
 
 reviewForm.addEventListener("submit", async (event) => {
     event.preventDefault();
-    const name = document.getElementById("name").value;
     const content = document.getElementById("feedback-box").value;
+    const nameElement = document.getElementById("name");
+    const name = nameElement.innerText;
+    console.log(name);
     const formData = {
         name: name,
         content: content,
         rating: lastButton // Include the selected rating value
     };
+    console.log(name);
 
     try {
         const response = await fetch('/submit-feedback', {

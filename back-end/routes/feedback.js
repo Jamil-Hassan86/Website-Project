@@ -25,7 +25,6 @@ router.get('/', async (req, res) => {
         const db = require("../database"); // Import the database connection
         const userName = await getUserById(userId, db);
         const feedback = await db.all('SELECT * FROM feedback ORDER BY post_date DESC');
-        console.log(feedback);
         res.render('feedback', { userName: userName, feedback: feedback });
     } catch (error) {
         console.error("Error fetching user's name:", error);
