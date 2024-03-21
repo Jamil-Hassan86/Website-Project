@@ -1,7 +1,7 @@
 body {
     margin: 0;
     padding: 0;
-    font-family: Helvetica, sans-serif;
+    font-family: "Montserrat", sans-serif;
     background-color: #e7e3e3;
 }
 
@@ -10,36 +10,38 @@ header {
     justify-content: space-between;
     align-items: center;
     background-color: rgb(255, 255, 255);
-    width: 100%;
-    position: absolute;
-    height: 100px;
+    width: 100vw;
+    
+    
 }
 
 h1 {
     color: black;
 }
 
-/* Change logo of site to image and links back to home page */
+nav {
+    display: flex;
+    
+}
 
 .logo {
     color: black;
     font-size: 25px;
-    text-decoration: none;
-    font-family: "Montserrat", sans-serif;
+    text-decoration: none;  
     font-optical-sizing: auto;
     font-weight: 1000;
     font-style: italic;
     position: relative;
-    left: 50px;
-
-    display: block;
-    height: auto; /* Maintain aspect ratio */
-    width: auto;
+    left: 3%;
+    bottom: 100%;
 }
 
 .shape-logo {
+    
+    margin-bottom: 1px;
     position: relative;
-    top: 10px;
+    right: 7%;
+    bottom: 10px;
 }
 .shape-logo::before{
     content: "";
@@ -53,16 +55,17 @@ h1 {
 }
 .shift-logo{
     position: relative;
-    left: 50px;
-    bottom: 30px;
+    left: 40px;
+    bottom: 22px;
+    margin: 0px;
     border-bottom: 1px solid rgb(0, 143, 83);
     border-width: 5px;
 }
 
+
 .nav-links a, .sign-up a{
-    font-family: "Montserrat", sans-serif;
-    font-weight: bold;
-    font-size: 16px;
+    font-weight: 700;
+    font-size: 18px;
     color: black;
     text-decoration: none;
 } 
@@ -75,26 +78,50 @@ h1 {
     padding: 0px 20px;
 }
 .nav-links li a{
-    transition: all 0.3s ease 0s;
+    position: relative;
+    display: inline-block;
+    padding: 6px;
+    overflow: hidden;
+    
 }
-
-.nav-links li a:hover{
-    color: green;
+.nav-links li a::after{
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0%;
+    height: 4px;
+    background-color: red;
+    transition: width 0.5s ease;
 }
-
-.nav-links, .sign-up{
-    font-family: "Montserrat", sans-serif;
-    font-weight: 500;
-    font-size: 16px;
-    color: black;
-    text-decoration: none;
-} 
+.nav-links li a:hover::after{
+    width: 100%;
+}
 
 .sign-up{
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 20px;
+    position: relative;
+    right: 20px;
 }
+
+.sign-up-text{
+    transition: all 0.5s ease;
+}
+.sign-up-text:hover{
+    text-shadow: 0px 0px 1px rgb(55, 43, 43) ;
+}
+.profile{
+    display: block;
+    width: 50px;
+    height: auto;
+    transition: all 0.5s ease;
+}
+.profile:hover{
+    cursor: pointer;
+}
+
 /* Dropdown wrapper */
 .dropdown {
     position: relative;
@@ -143,5 +170,9 @@ h1 {
     background-color: #ddd;
 }
 
-
-
+/* Change logo of site to image and links back to home page */
+.logo {
+    display: block;
+    height: auto; /* Maintain aspect ratio */
+    width: auto;
+}
