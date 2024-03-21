@@ -11,8 +11,6 @@ header {
     align-items: center;
     background-color: rgb(255, 255, 255);
     width: 100vw;
-    
-    
 }
 
 h1 {
@@ -62,6 +60,7 @@ nav {
     border-width: 5px;
 }
 
+
 .nav-links a, .sign-up a{
     font-weight: 700;
     font-size: 18px;
@@ -104,53 +103,80 @@ nav {
     position: relative;
     right: 20px;
 }
+
+.sign-up-text{
+    transition: all 0.5s ease;
+}
+.sign-up-text:hover{
+    text-shadow: 0px 0px 1px rgb(55, 43, 43) ;
+}
+.profile{
+    display: block;
+    width: 50px;
+    height: auto;
+    transition: all 0.5s ease;
+}
+.profile:hover{
+    cursor: pointer;
+}
+
 /* Dropdown wrapper */
 .dropdown {
     position: relative;
     margin-top: auto;
 }
 
-    /* Dropdown button */
-    .dropbtn {
-        background-color: transparent;
-        color: rgb(0, 0, 0);
-        font-size: 16px;
-        border: none;
-        cursor: pointer;
-        padding: 0;
-        margin: 0;
-        position: relative;
-        display: flex;
-        width: auto;
-        height: auto;
-        margin-right: 10px;
+/* Dropdown button */
+.dropbtn {
+    background-color: transparent;
+    color: rgb(0, 0, 0);
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    margin: 0;
+    position: relative;
+    display: flex;
+    width: auto;
+    height: auto;
+    margin-right: 10px;
 
-    }
+}
 
-    /* Dropdown content */
-    .dropdown-content {
-        display: none;
-        position: absolute;
-        background-color: #f9f9f9;
-        min-width: 400%;
-        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-        z-index: 2;
-        left: -280%;
-        top: 155%;
-    }
+/* Dropdown content (hidden by default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 400%;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 2;
+    left: -280%;
+    top: 155%;
+}
 
-    /* Links inside the dropdown */
-    .dropdown-content a {
-        color: black;
-        padding: 12px 16px;
-        text-decoration: none;
-        display: block;
-    }
+/* Links inside the dropdown */
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
 
-    /* Change color of dropdown links on hover */
-    .dropdown-content a:hover {
-        background-color: #ddd;
-    }
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {
+    background-color: #ddd;
+}
 
+/* Change logo of site to image and links back to home page */
+.logo {
+    display: block;
+    height: auto; /* Maintain aspect ratio */
+    width: auto;
+}
 
+main{
+    background-color: rgb(14, 67, 116);
+    background-image: url();
+}
 
