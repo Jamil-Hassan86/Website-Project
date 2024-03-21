@@ -12,17 +12,14 @@ header {
     background-color: rgb(255, 255, 255);
     width: 100%;
     position: absolute;
-    
+    height: 100px;
 }
 
 h1 {
     color: black;
 }
 
-nav {
-    display: flex;
-    
-}
+/* Change logo of site to image and links back to home page */
 
 .logo {
     color: black;
@@ -32,12 +29,17 @@ nav {
     font-optical-sizing: auto;
     font-weight: 1000;
     font-style: italic;
+    position: relative;
+    left: 50px;
+
+    display: block;
+    height: auto; /* Maintain aspect ratio */
+    width: auto;
 }
 
 .shape-logo {
-    margin: 10px;
-    margin-bottom: 5px;
     position: relative;
+    top: 10px;
 }
 .shape-logo::before{
     content: "";
@@ -50,19 +52,37 @@ nav {
     border-width: 5px;
 }
 .shift-logo{
-    margin: 1px;
-    margin-top: 1px;
-    margin-left:50px;
+    position: relative;
+    left: 50px;
+    bottom: 30px;
     border-bottom: 1px solid rgb(0, 143, 83);
     border-width: 5px;
 }
 
-.logo-container {
-    padding-left: 50px;
-    margin-top: -12px;
+.nav-links a, .sign-up a{
+    font-family: "Montserrat", sans-serif;
+    font-weight: bold;
+    font-size: 16px;
+    color: black;
+    text-decoration: none;
+} 
+
+.nav-links {
+    list-style: none;
+}
+.nav-links li {
+    display: inline-block;
+    padding: 0px 20px;
+}
+.nav-links li a{
+    transition: all 0.3s ease 0s;
 }
 
-.nav-links, .sign-up, .profile{
+.nav-links li a:hover{
+    color: green;
+}
+
+.nav-links, .sign-up{
     font-family: "Montserrat", sans-serif;
     font-weight: 500;
     font-size: 16px;
@@ -70,6 +90,11 @@ nav {
     text-decoration: none;
 } 
 
+.sign-up{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
 /* Dropdown wrapper */
 .dropdown {
     position: relative;
@@ -118,10 +143,5 @@ nav {
     background-color: #ddd;
 }
 
-/* Change logo of site to image and links back to home page */
-.logo {
-    display: block;
-    height: auto; /* Maintain aspect ratio */
-    width: auto;
-}
+
 
