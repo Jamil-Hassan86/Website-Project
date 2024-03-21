@@ -12,7 +12,6 @@ header {
     background-color: rgb(255, 255, 255);
     width: 100vw;
     
-    
 }
 
 h1 {
@@ -104,11 +103,23 @@ nav {
     position: relative;
     right: 20px;
 }
-/* Dropdown wrapper */
+
 .dropdown {
-    position: relative;
-    margin-top: auto;
+    display: none;
 }
+
+@media screen and (max-width: 830px) {
+    /* Dropdown wrapper */
+    .dropdown {
+        position: relative;
+        margin-top: auto;
+        display: block;
+    }
+
+    .nav-links, .sign-up{
+        display: none;
+    }
+
 
     /* Dropdown button */
     .dropbtn {
@@ -151,6 +162,6 @@ nav {
     .dropdown-content a:hover {
         background-color: #ddd;
     }
-
+}
 
 
