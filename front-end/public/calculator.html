@@ -9,7 +9,7 @@
         <script src="/Calculate.js"></script>
         <style>
             body {
-                margin: 0;
+                margin-top: 200px;
                 padding: 0;
             }
             header {
@@ -21,10 +21,115 @@
                 background-color: #ffffff;
                 box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
             }
+            
+                        .gender {
+                display: flex;
+                justify-content: center;
+                margin-bottom: 1rem;
+            }
+
+            /* Style for each radio button label */
             .container {
-                height: 100vh;
-                padding-top: 80px; /* Adjust this value to accommodate the height of your header */
-                box-sizing: border-box;
+                margin: 0 1rem;
+                display: flex;
+                align-items: center;
+            }
+
+            /* Style for custom radio button */
+            .container .checkmark {
+                display: inline-block;
+                width: 20px;
+                height: 20px;
+                border-radius: 50%;
+                margin-right: 10px;
+                background: white;
+                border: 1px solid #ccc;
+                position: relative;
+            }
+
+            /* Style for the actual radio button input */
+            .container input[type="radio"] {
+                display: none;
+            }
+
+            /* Showing the checkmark when the radio button is checked */
+            .container input[type="radio"]:checked ~ .checkmark {
+                background-color: #2196F3;
+                border-color: #2196F3;
+            }
+
+            .container input[type="radio"]:checked ~ .checkmark::after {
+                content: "";
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                width: 10px;
+                height: 10px;
+                background: white;
+                border-radius: 50%;
+                transform: translate(-50%, -50%);
+            }
+
+            /* Style for the text next to radio buttons */
+            .text {
+                display: inline-block;
+            }
+
+            /* Style for height and weight input containers */
+            .containerHW {
+                display: flex;
+                justify-content: space-between;
+                margin-bottom: 1rem;
+            }
+
+            .inputH, .inputW {
+                display: flex;
+                flex-direction: column;
+            }
+
+            .inputH label, .inputW label {
+                margin-bottom: 0.5rem;
+            }
+
+            /* Style for the input fields */
+            .inputH input, .inputW input {
+                padding: 0.5rem;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+            }
+
+            /* Style for the calculate button */
+            .calculate {
+                background-color: #4CAF50;
+                color: white;
+                border: none;
+                padding: 0.5rem 1rem;
+                cursor: pointer;
+                border-radius: 4px;
+                margin-top: 1rem;
+                font-size: 1rem;
+                transition: background-color 0.3s ease;
+            }
+
+            .calculate:hover {
+                background-color: #367c36;
+            }
+
+            /* Style for the result display */
+            .result {
+                text-align: center;
+                margin-top: 1rem;
+            }
+
+            .result #result {
+                font-size: 2rem;
+                color: #333;
+                margin: 0.5rem 0;
+            }
+
+            .result .comment {
+                color: #666;
+                font-style: italic;
             }
         </style>
     </head>
@@ -65,8 +170,6 @@
 
 
                     <div class="gender">
-
-
                         <label class="container">
                             <input type="radio" name="radio" id="m"><p class="text">Male</p>
                             <span class="checkmark"></span>

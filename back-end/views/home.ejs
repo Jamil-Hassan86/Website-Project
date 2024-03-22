@@ -7,12 +7,104 @@
         <link href="/styles/styles.css" rel="stylesheet"/>
         <script src="/script.js"></script>
         <style>
-            .main {display: flex; height: 100vh; justify-content: center; position: relative;}
-            main { display: flex; justify-content: center; align-items: center; width: 100%; height: 100%; overflow: hidden; max-width: 100%;}
-            .opening { position: absolute; top: 30%; left: 50%; transform: translate(-50%, -50%); text-align: center; z-index: 1; }
-            .opening h1 { color: red; font-size: 2rem;}
-            .main-image { display:flex; justify-content: center; align-items:center; width: 100%; height: 100%; position: relative;}
-            .main-image img { width: 100%; height: 100%; object-fit: cover;}    
+            .banner{
+                width: 100%;
+                height: 700px;
+                background-image:linear-gradient(0.25turn,rgb(0, 0, 0), rgba(5, 30, 15, 0.871), rgba(37, 3, 3, 0.887)), url(background-image-large.jpg);
+                background-position:center;
+                background-size: cover;
+                display: flex;
+                justify-content: space-around;
+            }
+            .banner-text{
+                margin: 14vh 1vw;
+                color: white;
+            }
+
+            h2{
+                font-size: 5vw;
+                margin: 0;
+                padding: 0;
+                font-style: italic;
+                font-weight: 200;
+                color: white;  
+                position: relative;
+            }
+
+           
+
+            h2::before{
+                content: "";
+                position: absolute;
+                width: 70%;
+                height: 1px;
+                bottom: 0;
+                left: 32%;
+                border-bottom: 1px solid rgb(15, 141, 51);
+                border-width: 8px;
+            }
+
+            p{
+                font-size: 18px;
+                margin-bottom: 28px;
+            }
+            .banner-images{
+                display: flex;
+                position: relative;
+            }
+            .rejwan-front, .rejwan-side{
+                position: relative;
+                width:100%;
+                height: 580px;
+                padding-top: 120px;
+                z-index: 4;
+            }
+
+            @media screen and (max-width: 849px){
+                .rejwan-front{
+                    display: none;
+                }
+                 h2 {
+                    font-size: 10vw;
+                }
+            }
+
+            @media screen and (max-width: 560px){
+                .rejwan-side{
+                    display: none;
+                }
+                h2 {
+                    font-size: 15vw;
+                }
+                .banner-text h2 p{
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                }
+                .start{
+                    font-size: 25px;
+                }
+
+            }
+
+            .start{
+                border: solid;
+                font-size: 30px;
+                background-color: red;
+                border-color: red;
+                color: white;
+                text-decoration: none;
+                padding: 10px;
+                margin: 10px;
+                transition: 0.5s ease;
+            }
+
+            .start:hover{
+                background-color: rgb(137, 16, 16);
+                border-color: rgb(131, 14, 14);
+                box-shadow: 0px 0px 2px rgb(158, 153, 153) ;
+            }
+              
         </style>
     </head>
     <body>
@@ -45,16 +137,19 @@
                 <a href="/profile"><img class="profile" src="profile.svg" alt="Profile icon"></a>
             </div>
         </header>
-        <div class="main">
-            <main>
-                <div class="main-image">
-                <img src="/Main.png">
-                    <div class="opening">
-                        <h1>Welcome <%= userName %> to the home page of ShapeShift!</h1>
-                    </div>
-                </div>
-            </main>
-        </div>
+        <div class="banner">
+            <div class="banner-text">
+                
+                <h2>Welcome <%= userName %></h2>
+                <p>to the home page of ShapeShift!</p>
+                <a class="start" href="/signup.html">START NOW</a>
+            </div>
+            <div class="banner-images">
+                <img class="rejwan-side" src="rejwan-side.png">  
+                <img class="rejwan-front" src="rejwan-front.png">     
+            </div>
+       </div>
+
 
     </body>
 
