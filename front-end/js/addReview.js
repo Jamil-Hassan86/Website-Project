@@ -1,7 +1,7 @@
 const reviewForm = document.getElementById("feedback-form");
 
 const buttons = document.querySelectorAll(".ratings button");
-var lastButton = null;
+var lastButton = 3;
 buttons.forEach(button => {
     button.addEventListener('click', () => {
     const value = button.value;
