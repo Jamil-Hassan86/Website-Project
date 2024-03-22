@@ -121,7 +121,6 @@ const app = express();
   
       try {
           await db.run('INSERT INTO feedback (name, rate, post_content, post_date) VALUES (?, ?, ?, CURRENT_TIMESTAMP)', [name, rating, content]);
-          console.log(req.body);
           res.redirect('/feedback');
       } catch (error) {
           console.error("Error posting", error);

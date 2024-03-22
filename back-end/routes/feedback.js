@@ -19,18 +19,38 @@ const getUserById = (userId, db) => {
     });
 };
 
+router.post('/submit-feedback', async (req, res) => {
+    const { name, content, rating } = req.body; // Ensure the names match the form fields
+
+    try {
+        await db.run('INSERT INTO feedback (name, post_content, rate, post_date) VALUES (?, ?, ?, CURRENT_TIMESTAMP)', [name, content, rating]);
+        console.log("Review submitted:", req.body);
+        res.redirect('/feedback');
+    } catch (error) {
+        console.error("Error posting review:", error);
+        res.status(500).send("Internal Server Error");
+    }
+});
+
 router.get('/', async (req, res) => {
     try {
         const userId = req.session.userId;
         const db = require("../database"); // Import the database connection
+        
         const userName = await getUserById(userId, db);
-        const feedback = await db.all('SELECT * FROM feedback ORDER BY post_date DESC');
-        console.log(feedback);
-        res.render('feedback', { userName: userName, feedback: feedback });
+        db.all('SELECT * FROM feedback', (err, rows) => {
+            if (err) {
+                console.error('Error retrieving feedback:', err);
+                res.status(500).send("Internal Server Error");
+            } else {
+                console.log('Retrieved feedback data:', rows);
+                res.render('feedback', { userName: userName, feedback: rows });
+            }
+        });
     } catch (error) {
         console.error("Error fetching user's name:", error);
         res.status(500).send("Internal Server Error");
-    }
+    }    
 });
 
 

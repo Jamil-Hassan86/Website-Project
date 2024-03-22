@@ -13,8 +13,9 @@ buttons.forEach(button => {
 
 reviewForm.addEventListener("submit", async (event) => {
     event.preventDefault();
-    const name = document.getElementById("name").value;
     const content = document.getElementById("feedback-box").value;
+    const nameElement = document.getElementById("name");
+    const name = nameElement.innerText;
     const formData = {
         name: name,
         content: content,
