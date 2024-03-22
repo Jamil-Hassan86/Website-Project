@@ -8,10 +8,7 @@
         <script src="/script.js"></script>
         <script src="/Calculate.js"></script>
         <style>
-            body {
-                margin-top: 200px;
-                padding: 0;
-            }
+            
             header {
                 position: fixed;
                 top: 0;
@@ -22,114 +19,85 @@
                 box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
             }
             
-                        .gender {
+           body {
+                font-family: 'Arial', sans-serif;
+                background: #f4f4f4;
+                margin: 0;
+                padding: 20px;
                 display: flex;
                 justify-content: center;
-                margin-bottom: 1rem;
-            }
-
-            /* Style for each radio button label */
-            .container {
-                margin: 0 1rem;
-                display: flex;
                 align-items: center;
+                height: 100vh;
             }
 
-            /* Style for custom radio button */
-            .container .checkmark {
-                display: inline-block;
-                width: 20px;
-                height: 20px;
-                border-radius: 50%;
-                margin-right: 10px;
-                background: white;
-                border: 1px solid #ccc;
-                position: relative;
-            }
-
-            /* Style for the actual radio button input */
-            .container input[type="radio"] {
-                display: none;
-            }
-
-            /* Showing the checkmark when the radio button is checked */
-            .container input[type="radio"]:checked ~ .checkmark {
-                background-color: #2196F3;
-                border-color: #2196F3;
-            }
-
-            .container input[type="radio"]:checked ~ .checkmark::after {
-                content: "";
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                width: 10px;
-                height: 10px;
-                background: white;
-                border-radius: 50%;
-                transform: translate(-50%, -50%);
-            }
-
-            /* Style for the text next to radio buttons */
-            .text {
-                display: inline-block;
-            }
-
-            /* Style for height and weight input containers */
-            .containerHW {
-                display: flex;
-                justify-content: space-between;
-                margin-bottom: 1rem;
-            }
-
-            .inputH, .inputW {
-                display: flex;
-                flex-direction: column;
-            }
-
-            .inputH label, .inputW label {
-                margin-bottom: 0.5rem;
-            }
-
-            /* Style for the input fields */
-            .inputH input, .inputW input {
-                padding: 0.5rem;
-                border: 1px solid #ccc;
-                border-radius: 4px;
-            }
-
-            /* Style for the calculate button */
-            .calculate {
-                background-color: #4CAF50;
+            .header {
+                background: #d35400;
                 color: white;
-                border: none;
-                padding: 0.5rem 1rem;
+                padding: 10px 20px;
+                text-align: center;
+                width: 100%;
+                box-sizing: border-box;
+                margin-bottom: 20px;
+            }
+
+            .box {
+                background: #fff;
+                padding: 20px;
+                border-radius: 8px;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+                width: 300px;
+            }
+
+            .box h1 {
+                text-align: center;
+                color: #333;
+                margin-bottom: 20px;
+            }
+
+            .container {
+                width: 100%;
+                max-width: 400px;
+                margin: 0 auto;
+                padding: 20px;
+                box-sizing: border-box;
+            }
+
+            .inputH, .inputW, .result {
+                margin-bottom: 10px;
+                width: 300px;
+            }
+
+            .inputH input, .inputW input, .calculate {
+                display: block;
+                width: 100%;
+                padding: 10px;
+                margin-top: 5px;
+                border-radius: 5px;
+                border: 1px solid #ddd;
+            }
+
+            .calculate {
+                background-color: #e74c3c;
+                color: white;
+                font-size: 16px;
+                border: 0;
                 cursor: pointer;
-                border-radius: 4px;
-                margin-top: 1rem;
-                font-size: 1rem;
-                transition: background-color 0.3s ease;
+                margin-top: 20px;
             }
 
             .calculate:hover {
-                background-color: #367c36;
+                background-color: #c0392b;
             }
 
-            /* Style for the result display */
             .result {
                 text-align: center;
-                margin-top: 1rem;
             }
 
-            .result #result {
-                font-size: 2rem;
-                color: #333;
-                margin: 0.5rem 0;
-            }
-
-            .result .comment {
-                color: #666;
-                font-style: italic;
+            /* Responsive styles */
+            @media (max-width: 768px) {
+                .header, .box, .container {
+                    width: 90%;
+                }
             }
         </style>
     </head>
