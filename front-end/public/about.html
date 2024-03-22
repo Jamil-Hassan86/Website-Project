@@ -1,121 +1,130 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset = "utf-8">
-        <meta name="viewport" content="width=device-width">
-        <title>About</title>
-        <link href="/styles/styles.css" rel="stylesheet"/>
-        <script src="/script.js"></script>
-        <style>
-            /* .main {
-                display: flex; height: 120vh; margin-top: auto;
-            }
-            main { 
-                display: flex; justify-content: center; align-items: center; width: 100%; height: 100%; overflow: hidden; max-width: 100%;
-            }
-            .opening { 
-                position: absolute; top: 30%; left: 50%; transform: translate(-50%, -50%); text-align: center; z-index: 1; 
-            }
-            .opening h1 {
-                 color: red; font-size: 2rem;
-                }
-            .main-image {
-                 display:flex; justify-content: center; align-items:center; width: 100%; height: 100%; position: relative;
-                }
-            .main-image img {
-                 width: 100%; height: 100%; object-fit: cover;
-                }
-            .get-started {
-                 position: absolute; bottom: 300px; left: 50%; transform: translateX(-50%); z-index: 1;
-             }
-            .get-started button { 
-                padding: 10px 80px; background-color: green; color: #fff; border: none; border-radius: 5px; cursor: pointer; 
-            } 
-            .get-started button:hover {
-                background-color: #68c268;
-            }
-            .about-us h1 {
-                margin: 0; font-size: 2.3em; font-family: Arial, Helvetica, sans-serif; display: flex; justify-content: center;
-            }
-            .about-us hr {
-                margin: 0; background-color: green; height: 0.2rem;
-            }
-            .about-heading 
-            {background-color: white;}
-            .about-heading h2 {
-                 margin-top: 0; display: flex; justify-content: center;
-            }
-            .about-heading p {
-                margin-bottom: 0;
-            }
-            .about-content {
-                display: flex; justify-content: space-around;
-            }
-            .content-box {
-                display: flex; width: 40%; position: relative;
-            }
-            .content-box p {
-                margin-left: 5%; margin-right: 3%;
-            } */
-        </style>
-    </head>
-    <body>
-        <header>
-            <a href="/" class="logo">
-                <p class="shape-logo">SHAPE</p>
-                <p class="shift-logo">SHIFT</p>
-            </a> 
-            <nav>
-                <ul class="nav-links">
-                    <li><a href="/">Home</a></li>
-                    <li><a href="/about.html">About</a></li>
-                </ul>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+    <link href="/styles/styles.css" rel="stylesheet">
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: Arial, sans-serif; /* Sample font */
+        }
 
-                <div class="dropdown">
-                    <button class="dropbtn" onclick="toggleDropdown()">Menu</button>
-                    <div class="dropdown-content" id="myDropdown">
-                        <a href="/about.html">About</a>
-                        <a href="/signup.html">Sign Up</a>
-                        <a href="/login.html">Log In</a>
-                    </div>
+        header {
+            background-color: #ffffff; /* Sample color */
+            color: white; /* Sample color */
+            text-align: center;
+            padding: 20px;
+        }
+
+        main {
+            min-height: calc(100vh - 70px); /* Adjust as needed */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .about-section {
+            padding: 50px 20px;
+            text-align: center;
+            width: 90%; /* Adjust as needed */
+            max-width: 1200px; /* Sample max-width */
+            margin: 0 auto; /* Center the section */
+        }
+        .about-heading {
+            margin-bottom: 20px;
+        }
+        .about-content {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 40px;
+        }
+        .about-content-item {
+            flex: 1;
+            min-width: 300px;
+            max-width: 400px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+        }
+
+        @media (max-width: 768px) {
+            .about-section {
+                width: 95%;
+            }
+            .about-content-item {
+                min-width: 100%;
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="/" class="logo">
+            <p class="shape-logo">SHAPE</p>
+            <p class="shift-logo">SHIFT</p>
+        </a> 
+        <nav>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/calculator.html">BMI Calculator</a></li>
+                <li><a href="/feedback">Reviews</a></li>
+                <li><a href="/about.html">About</a></li>
+            </ul>
+
+            <div class="dropdown">
+                <button class="dropbtn" onclick="toggleDropdown()">Menu</button>
+                <div class="dropdown-content" id="myDropdown">
+                    <a href="calculator.html">BMI Calculator</a>
+                    <a href="/feedback">Feedback</a>
+                    <a href="/about.html">About</a>
+                    <a href="/signup.html">Sign Up</a>
+                    <a href="/login.html">Log In</a>
                 </div>
-            </nav>
-            <div class="sign-up">
-                <a class="sign-up-text" href="/signup.html">Sign up</a>
-                <img class="profile" src="profile.svg">
             </div>
-            
-        </header>    
-        <!-- <div class="main">
-            <main>
-                <div class="main-image">
-                    <img src="/Main.png">
-                    <div class="opening">
-                        <h1>Welcome to the home page of ShapeShift!</h1>
-                    </div>
-                    <div class="get-started">
-                        <a href="signup.html"><button type="submit">Get Started</button></a>
-                    </div>
-                </div>
-            </main>
+        </nav>
+        <div class="sign-up">
+            <a class="sign-up-text" href="/signup.html">Sign up</a>
+            <img class="profile" src="profile.svg">
         </div>
-        <section>
-            <div class="about-us">
-                <h1>About us</h1>
+    </header>
+
+    <main>
+        <section class="about-section">
+            <div class="about-heading">
+                <h1>About Us</h1>
                 <hr>
             </div>
-            <div class="about-heading">
-                <h2>What We Do</h2>
-                <div class="about-content">
-                    <div class="content-box">
-                        <p>ShapeShift is a web fitness application created to inspire and encourage the South Asian demographic</p>
-                        <hr>
-                        <p>Bye! asd sajh aj hsjad kds  jads haskjh hgle jgjdkls fk sd  g j keap fk gr gs nmd ae f fkf</p>
-                    </div>
-                </div>    
+            <div class="about-content">
+                <div class="about-content-item">
+                    <h2>Our Mission</h2>
+                    <p>
+                        ShapeShift is dedicated to promoting health and fitness within the South Asian community. Our mission is to inspire and empower individuals of South Asian descent to adopt healthier lifestyles, thereby combatting prevalent diseases commonly found within this ethnic group.
+                    </p>
+                </div>
+                <hr>
+                <div class="about-content-item">
+                    <h2>Challenges</h2>
+                    <p>
+                        We acknowledge the challenges inherent in catering to the diverse South Asian community, including varying languages, cultural traditions, and socioeconomic factors. To address these challenges, we have conducted extensive research and employed a user-centered design approach. By incorporating ethnographic research, surveys, and focus groups, we aim to gain deeper insights into the needs and preferences of our demographic.
+                    </p>
+                </div>
+                <hr>
+                <div class="about-content-item">
+                    <h2>Team</h2>
+                    <p>
+                        Our team consists of dedicated individuals with diverse backgrounds in web development, design, and health sciences. We collaborate closely to ensure that ShapeShift meets the highest standards of quality and user experience.
+                    </p>
+                </div>
             </div>
-        </section> -->
-
-    </body>
-
+        </section>
+    </main>
+</body>
 </html>
