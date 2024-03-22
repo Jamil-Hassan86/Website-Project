@@ -7,6 +7,9 @@ const session = require('express-session');
 const db = require('./database');
 const review_db = require("./database");
 const { default: test } = require("node:test");
+const mime = require('mime-types');
+const path = require('path');
+const fs = require('fs');
 
 const app = express();
 
@@ -178,6 +181,23 @@ const app = express();
     app.get("/profile", sessionCheck, (req, res) => {
       res.send("Welcome to your profile!");
     });
+
+    app.get('/videos/:filename', (req, res) => {
+      const videoFilePath = path.join(__dirname, 'videos', req.params.filename);
+      const contentType = mime.lookup(videoFilePath);
+  
+      // Set the appropriate Content-Type header
+      if (contentType) {
+          res.setHeader('Content-Type', contentType);
+      }
+  
+      // Stream the video file
+      const stream = fs.createReadStream(videoFilePath);
+      stream.pipe(res);
+  });
+  
+
+
 
     //deletes cache so users cannot press left arrow on browser to go back to user page and are instead redirected to login page
     app.use((req, res, next) => {
