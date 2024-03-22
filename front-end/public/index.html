@@ -9,57 +9,194 @@
         <style>
             
             .banner{
-                width: 100vw;
-                height: 100vh;
+                width: 100%;
+                height: 700px;
                 background-image:linear-gradient(0.25turn,rgb(0, 0, 0), rgba(5, 30, 15, 0.871), rgba(37, 3, 3, 0.887)), url(background-image-large.jpg);
-                background-position: bottom;
+                background-position:center;
                 background-size: cover;
                 display: flex;
                 justify-content: space-around;
             }
             .banner-text{
-                margin: 20vh 0;
-                color: white;  
+                margin: 10vh 1vw;
+                color: white;
             }
 
             h1, h2{
-                font-size: 7vw;
+                font-size: 5vw;
                 margin: 0;
                 padding: 0;
                 font-style: italic;
                 font-weight: 200;
                 color: white;  
+                position: relative;
             }
 
             h1{
                 font-weight: 1000;
+                
             }
             
-            h1::after{
+            h1::before{
                 content: "";
                 position: absolute;
-                width: 45%;
+                width: 60%;
                 height: 1px;
                 bottom: 0;
                 left: 0%;
                 border-bottom: 1px solid red;
-                border-width: 5px;
+                border-width: 8px;
+            }
+
+            h2::before{
+                content: "";
+                position: absolute;
+                width: 70%;
+                height: 1px;
+                bottom: 0;
+                left: 32%;
+                border-bottom: 1px solid rgb(15, 141, 51);
+                border-width: 8px;
+            }
+
+            p{
+                font-size: 18px;
+                margin-bottom: 28px;
             }
             .banner-images{
                 display: flex;
-               
-            }
-            .rej1{
                 position: relative;
-                width: 30vw;
-                padding-top: 350px;
+            }
+            .rejwan-front, .rejwan-side{
+                position: relative;
+                width:100%;
+                height: 580px;
+                padding-top: 120px;
+                z-index: 4;
             }
 
-            .rej2{
-                width: 450px;
-                padding-top: 350px;
+            @media screen and (max-width: 849px){
+                .rejwan-front{
+                    display: none;
+                }
+                h1, h2 {
+                    font-size: 10vw;
+                }
             }
 
+            @media screen and (max-width: 560px){
+                .rejwan-side{
+                    display: none;
+                }
+                h1, h2 {
+                    font-size: 15vw;
+                }
+                .banner-text h1 h2 p{
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                }
+                .start{
+                    font-size: 25px;
+                }
+
+            }
+
+            .start{
+                border: solid;
+                font-size: 30px;
+                background-color: red;
+                border-color: red;
+                color: white;
+                text-decoration: none;
+                padding: 10px;
+                margin: 10px;
+                transition: 0.5s ease;
+            }
+
+            .start:hover{
+                background-color: rgb(137, 16, 16);
+                border-color: rgb(131, 14, 14);
+                box-shadow: 0px 0px 2px rgb(158, 153, 153) ;
+            }
+
+            main{
+                display: flex;
+                flex-direction: row;
+                justify-content: space-around;
+            }
+
+            .bmi{
+                display: flex;
+                flex-direction: column;
+            }
+
+            .bmi h2, .plans h2{
+                font-weight: 700;
+                color: black;
+            }
+            .bmi-container, .plans-container{
+                display: flex;
+                flex-direction: row;
+                justify-content: space-around;
+                background:linear-gradient(0.25turn,rgb(0, 0, 0), rgba(5, 30, 15, 0.871), rgba(37, 3, 3, 0.887));
+                margin: 10px;
+                padding: 20px;
+               
+                border-radius: 38px;
+            }
+
+            .first-coloumn, .plans-container{
+                display: flex;
+                flex-direction: column;
+                
+            }
+
+            .first-coloumn p, .second-coloumn p{
+                color: white;
+            }
+
+            .first-coloumn div, .second-coloumn div{
+                height: 25px;
+                background-color: rgb(212, 212, 212);
+                margin: 0;
+            }
+
+            .plans-container p {
+                color: rgb(0, 0, 0);
+                background-color: beige;
+                height: 35px;
+                font-weight: 200;
+            }
+            
+            
+            .bmi-calculator, .custom-plans{
+                text-decoration: none;
+            }
+
+            @media screen and (max-width: 891px){
+                .bmi h2, .plans h2{
+                    font-size: 40px;
+                }
+            }
+
+            @media screen and (max-width: 711px){
+                .bmi h2, .plans h2{
+                    font-size: 30px;
+                }
+            }
+
+            @media screen and (max-width: 547px){
+                .bmi h2, .plans h2{
+                    font-size: 25px;
+                }
+            }
+
+            @media screen and (max-width: 443px){
+                .bmi h2, .plans h2{
+                    font-size: 18px;
+                }
+            }
         </style>
     </head>
     <body>
@@ -99,13 +236,51 @@
                 <h1>SHIFT</h1>
                 <h2>YOUR LIFE</h2>
                 <p>Staying healthy has never been so easy</p>
-                <a class="start" href="#">START NOW</a>
+                <a class="start" href="/signup.html">START NOW</a>
             </div>
             <div class="banner-images">
-                
+                <img class="rejwan-side" src="rejwan-side.png">  
+                <img class="rejwan-front" src="rejwan-front.png">     
             </div>
        </div>
+        <main>
+            <a class="bmi-calculator" href="calculator.html">
+                <div class="bmi">
+                    <h2>BMI CALCULATOR</h1>
+                    <div class="bmi-container">
+                        <div class="first-coloumn">
+                            <p>AGE</p>
+                            <div></div>
+                            <p>GENDER</p>
+                            <div></div>
+                            <p>height</p>
+                            <div></div>
+                        </div>
+                        <div class="second-coloumn">
+                            <p>WEIGHT</p>
+                            <div></div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+               
+            
+            <a class="custom-plans" href="signup.html">
+                <div class="plans">
+                    <h2>CUSTOM PLANS</h1>
+                    <div class="plans-container">
         
+                        <p>Beginner</p>
+                    
+                        <p>Intermediate</p>
+                    
+                    
+                        <p>Advance</p>
+                    
+                    </div>
+                </div>
+            </a>
+        </main>
 
     </body>
 
