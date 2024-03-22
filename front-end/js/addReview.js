@@ -22,7 +22,6 @@ reviewForm.addEventListener("submit", async (event) => {
         content: content,
         rating: lastButton // Include the selected rating value
     };
-    console.log(name);
 
     try {
         const response = await fetch('/submit-feedback', {

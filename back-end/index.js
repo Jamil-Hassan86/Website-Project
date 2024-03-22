@@ -28,6 +28,7 @@ const app = express();
         CREATE TABLE IF NOT EXISTS feedback (
           id INTEGER PRIMARY KEY AUTOINCREMENT,
           name VARCHAR(50),
+          rate VARCHAR(50),
           post_content TEXT,
           post_date TIMESTAMP
         );
@@ -116,10 +117,10 @@ const app = express();
     };
 
     app.post("/submit-feedback", async (req, res) => {
-      const { name, feedbackContent } = req.body;
+      const { name, rating, content } = req.body;
   
       try {
-          await db.run('INSERT INTO feedback (name, post_content, post_date) VALUES (?, ?, CURRENT_TIMESTAMP)', [name, feedbackContent]);
+          await db.run('INSERT INTO feedback (name, rate, post_content, post_date) VALUES (?, ?, ?, CURRENT_TIMESTAMP)', [name, rating, content]);
           console.log(req.body);
           res.redirect('/feedback');
       } catch (error) {
