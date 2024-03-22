@@ -5,7 +5,6 @@ const cors = require("cors");
 const port = 3000;
 const session = require('express-session');
 const db = require('./database');
-const review_db = require("./database");
 const { default: test } = require("node:test");
 const mime = require('mime-types');
 const path = require('path');
