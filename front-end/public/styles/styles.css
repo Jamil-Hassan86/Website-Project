@@ -11,14 +11,22 @@ header {
     align-items: center;
     background-color: rgb(255, 255, 255);
     width: 100vw;
+<<<<<<< HEAD
     position: sticky;
     z-index: 999;
+=======
+    position: relative;
+>>>>>>> d42a37e24a103b0d36473bf0830e9c8c098df657
 }
 
 h1 {
     color: black;
 }
+<<<<<<< HEAD
   
+=======
+ 
+>>>>>>> d42a37e24a103b0d36473bf0830e9c8c098df657
 
 nav {
     display: flex;
@@ -135,7 +143,7 @@ nav {
     .dropdown {
         position: relative;
         margin-top: auto;
-        display: block;
+        display: inline-block;
     }
 
     .nav-links, .sign-up{
@@ -167,7 +175,11 @@ nav {
         background-color: #f9f9f9;
         min-width: 400%;
         box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+<<<<<<< HEAD
         z-index: 999;
+=======
+        z-index: 100;
+>>>>>>> d42a37e24a103b0d36473bf0830e9c8c098df657
         left: -300%;
         top: 315%;
 
@@ -179,13 +191,22 @@ nav {
         padding: 12px 16px;
         text-decoration: none;
         display: block;
+        z-index: 2;
     }
 
     /* Change color of dropdown links on hover */
     .dropdown-content a:hover {
         background-color: #ef6464;
+        display: block;
     }
 }
 
+<<<<<<< HEAD
 
+=======
+main{
+    background-image: url("images/background-image.jpg");
+    height: 100px;
+}
+>>>>>>> d42a37e24a103b0d36473bf0830e9c8c098df657
 
